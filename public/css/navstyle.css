@@ -1,0 +1,22 @@
+.is-navColor {
+    background-color: #221f33;
+    height: 50px;
+}
+
+.tab-color {
+    color: #d5b361;
+}
+
+.logoImage {
+    height: 200px;
+    width: 200px;
+}
+
+.navbar-brand {
+    height: 70px;
+}
+
+.navbar-item img {
+    max-height: 112px;
+    margin-top: 30px;
+}
