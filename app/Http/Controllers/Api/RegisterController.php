@@ -4,37 +4,22 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Student;
-use App\Models\User;
+use App\Models\user;
+use Spatie\Permission\Models\Role;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
-use Spatie\Permission\Models\Role;
 
 class RegisterController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function register(Request $request)
     {
         $request->validate([
             'full_name'           => 'required|string|max:255',
             'phone'               => 'required|string|min:10|max:25',
-            'email'               => 'required|string|email|max:255|unique:users',
+            'email'               => 'required|string|email|unique:users|max:255',
             'password'            => 'required|string|confirmed|min:8',
             'photo'               => ' required|file|image',
             'role_id'             => 'required|exists:roles,id',
@@ -58,50 +43,26 @@ class RegisterController extends Controller
         ]);
 
         $role = Role::find($request->role_id);
-
         $user->assignRole($role);
-        // $user_id = Auth::id();
-        return response()->json(['user' => $user, 'student' => $student]);
 
-        // if ($role == (Role::findByName('Student'))) {
-        //     return redirect()->route('years.index');
-        // }
-        // event(new Registered($user));
+        $token = $user->createToken('myapptoken')->plainTextToken;
 
-        // return redirect(RouteServiceProvider::HOME);
+        $response = [
+            'user'    => $user,
+            'token'   => $token,
+            'student' => $student,
+
+        ];
+        return response($response, 201);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function logout(Request $request)
     {
-        //
-    }
+        auth()->user()->tokens()->delete();
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return [
+            'message' => 'Logged out'
+        ];
     }
 }

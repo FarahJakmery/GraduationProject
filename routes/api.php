@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\AuthenticatedController;
+use App\Http\Controllers\Api\LoginController;
 use App\Http\Controllers\Api\CourseController;
 use App\Http\Controllers\Api\LectureController;
 use App\Http\Controllers\Api\RegisterController;
@@ -20,19 +20,30 @@ use App\Http\Controllers\Api\YearController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+// Public Routes
+Route::post('/register', [RegisterController::class, 'register']);
+Route::post('/login', [LoginController::class, 'login']);
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+// Protected Routes
+Route::group(['middleware' => 'auth:sanctum'], function () {
+
+    // Search Api
+    Route::get('/search', [SearchController::class, 'search']);
+
+    // Year Api
+    Route::get('/years', [YearController::class, 'index']);
+    Route::get('/years/{id}', [YearController::class, 'show']);
+
+    // Semester Api
+    Route::get('/semesters/{id}', [SemesterController::class, 'show']);
+
+    // Course Api
+    Route::get('/courses/{id}', [CourseController::class, 'show']);
+
+    //lectures Api
+    Route::get('/lectures/{id}', [LectureController::class, 'show']);
+    Route::get('/lectures/{lecture}/download', [LectureController::class, 'download']);
+
+    // Logout Api
+    Route::post('/logout', [RegisterController::class, 'logout']);
 });
-Route::middleware('auth:api')->group(function () {
-});
-route::post('/login', [AuthenticatedController::class, 'login']);
-route::post('/register', [RegisterController::class, 'store']);
-Route::get('/years', [YearController::class, 'index']);
-Route::get('/years/{id}', [YearController::class, 'show']);
-Route::get('/semesters/{id}', [SemesterController::class, 'show']);
-Route::get('/courses/{id}', [CourseController::class, 'show']);
-Route::get('/courses', [CourseController::class, 'index']);
-Route::get('/search', [SearchController::class, 'search']);
-Route::get('/lectures/{id}', [LectureController::class, 'show']);
-Route::get('/lectures/{id}/download', [LectureController::class, 'download']);

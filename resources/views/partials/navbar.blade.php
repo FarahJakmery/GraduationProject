@@ -110,7 +110,9 @@
             <div class="navbar-item">
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link tab-color" href="#">{{ Auth::user()->full_name }}</a>
-
+                    <figure class="image is-64x64 ">
+                        <img class="is-rounded" src="{{ Auth::user()->photo }}">
+                    </figure>
                     <div class="navbar-dropdown">
                         <a class="navbar-item tab-color" href="{{ route('logout') }}"
                             onclick="event.preventDefault();document.getElementById('logout-form').submit();">

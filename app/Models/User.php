@@ -9,12 +9,12 @@ use Illuminate\Notifications\Notifiable;
 use App\Models\Professor;
 use App\Models\Student;
 use App\Models\Year;
-use App\Models\Enroll;
 use Spatie\Permission\Traits\HasRoles;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, HasRoles;
+    use HasFactory, Notifiable, HasRoles, HasApiTokens;
 
 
     /**

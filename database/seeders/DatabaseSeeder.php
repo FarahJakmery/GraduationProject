@@ -48,34 +48,6 @@ class DatabaseSeeder extends Seeder
             'user_id'      => '2',
         ]);
         $user->assignRole('Professor');
-
-
-
-        // $firstYear = Year::create([
-        //     'name'   => 'First Year',
-        //     'photo'  => asset('storage/yearsPhotos/')
-        // ]);
-
-        // $secondYear = Year::create([
-        //     'name'   => 'SECOND Year',
-        //     'photo'  => asset('SECOND.png')
-        // ]);
-
-        // $thirdYear = Year::create([
-        //     'name'   => 'THIRD Year',
-        //     'photo'  => asset('THIRD.png')
-        // ]);
-
-        // $fourthYear = Year::create([
-        //     'name'   => 'FOURTH Year',
-        //     'photo'  => asset('FOURTH.png')
-        // ]);
-
-        // $fifthYear = Year::create([
-        //     'name'   => 'FIFTH Year',
-        //     'photo'  => asset('FIFTH.png')
-        // ]);
-
         // Semesters for the First Year
         $firstsemesteryear1 = Semester::create([
             'name'                => '1th semester',
