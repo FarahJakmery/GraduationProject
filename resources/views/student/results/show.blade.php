@@ -11,22 +11,22 @@
                         <div class="media">
                             <div class="media-left">
                                 <figure class="image is-96x96">
-                                    <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                                    <img src="{{ $quiz_details->user->photo }}" alt="Placeholder image">
                                 </figure>
                             </div>
                             <div class="media-content">
-                                <p class="title is-4">User Name</p>
-                                <p class="subtitle is-6">User Email</p>
+                                <p class="title is-4">{{ $quiz_details->user->full_name }}</p>
+                                <p class="subtitle is-6">{{ $quiz_details->user->email }}</p>
                             </div>
                         </div>
                         <div class="content">
-                            Results of your test
+                            <b>Result of your test</b>
                             <br>
-                            <p>Total Results: {{ $quiz_details->quiz_result }}</p>
-                            <time datetime="2016-1-1">28/6/2021</time>
-                        </div>
-                        <div class="button is-primary">
-                            <a href="">GET DETAILS IN PDF BY EMAIL</a>
+                            <p>Total Results: {{ $quiz_details->quiz_result }}/{{ $full_mark }}</p>
+                            <p>
+                                <b>Date :</b>
+                            <p id="date"></p>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -34,3 +34,13 @@
         </div>
     </div>
 @endsection
+
+@push('script')
+    <script>
+        n = new Date();
+        y = n.getFullYear();
+        m = n.getMonth() + 1;
+        d = n.getDate();
+        document.getElementById("date").innerHTML = d + "/" + m + "/" + y;
+    </script>
+@endpush

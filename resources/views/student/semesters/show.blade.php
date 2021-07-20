@@ -5,7 +5,7 @@
     <div class="container courseContainer">
         <div class="columns is-multiline">
             @foreach ($courses as $course)
-                <div class="column is-6">
+                <div class="column is-4">
                     <a href="{{ route('studentcourses.show', $course->id) }}">
                         <div class="card coursercard">
                             <div class="card-image">
@@ -14,26 +14,18 @@
                                 </figure>
                             </div>
                             <div class="card-content">
-                                <div class="media">
-                                    <div class="media-left">
-                                        <figure class="image is-48x48">
-                                            <img src="https://bulma.io/images/placeholders/96x96.png"
-                                                alt="Placeholder image">
-                                        </figure>
-                                    </div>
-                                    <div class="media-content">
-                                        <p class="title is-4">{{ $course->name }}</p>
-                                        {{-- <p class="subtitle is-6">{{ $course->professor->user->full_name }}</p> --}}
-                                    </div>
-                                </div>
+                                <h1 class="title coursename is-6">Course Name:<span class="subtitle is-6">
+                                        {{ $course->name }}</span>
+                                </h1>
+                                <h1 class="title professorname is-6">professor Name:<span class="subtitle is-6">
+                                        {{ $course->professor->user->full_name }}</span>
+                                </h1>
+                                <h1 class="title description is-6">Description:<span class="subtitle is-6">
+                                        {{ $course->description }}</span>
+                                </h1>
+                                {{-- <b>Created At:</b> {{ $course->created_at }} --}}
 
-                                <div class="content">
-                                    {{ $course->description }}
-                                    <br>
-                                    <time datetime="2016-1-1">
-                                        <b>Created At:</b> {{ $course->created_at }}
-                                    </time>
-                                </div>
+
                             </div>
                         </div>
 

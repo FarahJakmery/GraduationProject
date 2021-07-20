@@ -7,8 +7,16 @@
     <div class="container">
         <form action="{{ route('quizzes.store') }}" method="post">
             @csrf
+
+            <figure class="image create">
+                <img class="createimg" src="/images/Decoration2.png">
+            </figure>
+            {{-- inverse image --}}
+            <figure class="image inverse">
+                <img class="inverseimg" src="/images/Decoration2.png">
+            </figure>
             <div class="field">
-                <label class="label">Course</label>
+                <label class="label inputtitle">Course:</label>
                 <div class="control">
                     <div class="select">
                         <select name="course_id">
@@ -25,7 +33,7 @@
 
             {{-- quiz title --}}
             <div class="field">
-                <label class="label"> Quiz Title</label>
+                <label class="label inputtitle quizinput"> Quiz Title:</label>
                 <div class="control">
                     <input class="input {{ $errors->has('name') ? 'is-danger' : '' }}" type="text" name="name"
                         placeholder="EX:First Quiz " value="{{ old('name') }}">
@@ -39,17 +47,17 @@
 
             {{-- questions --}}
             <div class="field">
-                <label class="label">Questions</label>
+                <label class="label inputtitle"> Select Questions:</label>
                 <div class="control">
-                  <div class="select is-multiple">
-                    <select name="questions[]" multiple>
-                        @foreach ($questions as $question)
-                            <option value="{{ $question->id }}">{{ $question->question_text }}</option>
-                        @endforeach
-                    </select>
-                  </div>
-                  <p class="help">Click and hold ctrl key to select multiple questions</p>
-                  @error('questions')
+                    <div class="select is-multiple">
+                        <select name="questions[]" multiple>
+                            @foreach ($questions as $question)
+                                <option value="{{ $question->id }}">{{ $question->question_text }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <p class="help subtitle is-5">Click and hold ctrl key to select multiple questions</p>
+                    @error('questions')
                         <p class="help is-danger">{{ $message }}</p>
                     @enderror
                 </div>
@@ -58,7 +66,7 @@
 
             <div class="field">
                 <div class="control">
-                    <button class="button is-link">Save</button>
+                    <button class="button ">Save Question</button>
                 </div>
             </div>
         </form>

@@ -7,6 +7,7 @@ use App\Models\Professor;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Spatie\Permission\Models\Role;
 use Image;
 
@@ -69,6 +70,7 @@ class ProfessorController extends Controller
             ->save(public_path($url));
         $user->photo = $url;
         $user->save();
+
 
         $role = Role::find($request->role_id);
         $user->assignRole($role);

@@ -1,19 +1,20 @@
 .semestercard {
-    width: 550px;
-    height: 350px;
+    width: 559px;
+    height: 307px;
     position: relative;
     box-shadow: 0 10px 20px #0a1516c9;
 }
 
 .semesterimg {
-    width: 200px;
-    height: 200px;
+    width: 164px;
+    height: 164px;
     margin: 0 auto;
 }
 
 .semestername {
     margin: 0 auto;
     border: none;
+    margin-top: -35px;
 }
 
 .border1 {
@@ -23,10 +24,17 @@
 }
 .smallfigure1 {
     position: absolute;
-    top: 20px;
-    left: 420px;
+    top: 10px;
+    left: 480px;
+    transform: rotate(171deg);
+    width: 70px;
+    height: 70px;
 }
-
+.image img {
+    width: 70px;
+    height: 70px;
+    margin-top: 0px;
+}
 .smallfigure2 {
     position: absolute;
     top: 150px;

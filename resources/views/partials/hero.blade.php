@@ -38,7 +38,7 @@
                                 <form action="{{ route('search') }}" method="get">
                                     <div class="field">
                                         <div class="control has-icons-left">
-                                            <input class="input is-rounded" type="text" name="q"
+                                            <input class="input searchwidth is-rounded" type="text" name="q"
                                                 placeholder="Search ..." value="{{ old('q') }}">
                                             <span class="icon has-text-success is-small is-left">
                                                 <i class="fas fa-search"></i>
@@ -51,30 +51,16 @@
                                 </form>
                             </div>
 
-                            <div class="navbar-item has-dropdown is-hoverable">
-                                <a class="navbar-link tab-color{{ Route::currentRouteName() == 'years.index' ? 'is-active' : '' }}"
-                                    href="{{ route('years.index') }}">
-                                    Years
-                                </a>
-                                <div class="navbar-dropdown">
-                                    <a class="navbar-item">
-                                        About
-                                    </a>
-                                    <a class="navbar-item">
-                                        Jobs
-                                    </a>
-                                    <a class="navbar-item">
-                                        Contact
-                                    </a>
-                                    <hr class="navbar-divider">
-                                    <a class="navbar-item">
-                                        Report an issue
-                                    </a>
-                                </div>
-                            </div>
-                            <a class="navbar-item {{ Route::currentRouteName() == 'studentquizzes.index' ? 'is-active' : '' }}"
-                                href="{{ route('studentquizzes.index') }}">َQuizzes</a>
-                            <a class="navbar-item {{ Route::currentRouteName() == 'results.index' ? 'is-active' : '' }}"
+
+                            <a class="navbar-item tab-color{{ Route::currentRouteName() == 'years.index' ? 'is-active' : '' }}"
+                                href="{{ route('years.index') }}">
+                                Years
+                            </a>
+
+                            <a class="navbar-item  tab-color{{ Route::currentRouteName() == 'studentquizzes.index' ? 'is-active' : '' }}"
+                                href="{{ route('studentquizzes.index') }}">َ Quizzes</a>
+
+                            <a class="navbar-item tab-color {{ Route::currentRouteName() == 'results.index' ? 'is-active' : '' }}"
                                 href="{{ route('results.index') }}">Result</a>
 
                             @endrole
@@ -106,31 +92,11 @@
                             @endrole
 
                         @endif
-
-
-                        {{-- <div class="navbar-item has-dropdown is-hoverable">
-                            <figure class="image is-32x32">
-                                <img class="is-rounded" src="{{ Auth::user()->photo }}">
-                            </figure>
-                            <div class="navbar-dropdown">
-                                <a class="navbar-link tab-color" href="#">{{ Auth::user()->full_name }}</a>
-                                <a class="navbar-item tab-color" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                    Logout
-                                </a>
-
-                                <form id="logout-form tab-color" action="{{ route('logout') }}" method="POST"
-                                    style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                            </div>
-                        </div> --}}
-
-                        {{-- <div class="navbar-item has-dropdown is-hoverable"> --}}
                         <figure class="image usernavimage navbar-item has-dropdown is-hoverable">
-                            <img class="is-rounded " src="{{ Auth::user()->photo }}">
+                            <img class="is-rounded image1" src="{{ Auth::user()->photo }}">
                             <div class="navbar-dropdown">
-                                <a class="navbar-link tab-color" href="#">{{ Auth::user()->full_name }}</a>
+                                <a class="navbar-item tab-color"
+                                    href="{{ route('profile.show', Auth::user()->id) }}">{{ Auth::user()->full_name }}</a>
                                 <a class="navbar-item tab-color" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                     Logout
@@ -142,7 +108,6 @@
                                 </form>
                             </div>
                         </figure>
-                        {{-- </div> --}}
                     </div>
                 </div>
             </div>
@@ -153,11 +118,10 @@
     <div class="hero-body">
         <div class="container has-text-centered">
             <h1 class="title titlecolor">
-                {{-- @yield('title') --}}
-            </h1>
-            <h2 class="subtitle subtitlecolor">
-                {{-- @yield('subtitle') --}}
-            </h2>
+                @yield('title')
+                <h2 class="subtitle subtitlecolor">
+                    @yield('subtitle')
+                </h2>
         </div>
     </div>
 

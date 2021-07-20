@@ -1,0 +1,25 @@
+.yearcard {
+    width: 237.5px;
+    height: 339.4px;
+    position: relative;
+    box-shadow: 0 10px 20px #0a1516c9;
+}
+
+.yearimg {
+    width: 160.19px;
+    height: 162.88px;
+    margin: 0 auto;
+}
+
+.yearname {
+    margin: -10px auto 0 auto;
+    border-top: 2px solid #221f33;
+}
+.media-left figure img {
+    width: 70px;
+    height: 66.44px;
+}
+.title {
+    color: #221f33;
+    margin-top: 35px;
+}

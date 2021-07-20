@@ -22,6 +22,7 @@ use App\Http\Controllers\Student\QuizController as StudentQuizController;
 use App\Http\Controllers\Student\LectureController as StudentLectureController;
 use App\Http\Controllers\Student\ResultController;
 use App\Http\Controllers\Student\SearchController;
+use App\Http\Controllers\Student\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,7 +47,8 @@ Route::group(['prefix' => '/student', 'middleware' => ['role:Student']], functio
     // semester route
     Route::resource('semesters', SemesterController::class);
     // semester route
-    Route::get('/semesters/{id}', [SemesterController::class, 'show'])->name('years.show');
+    // edit it was years.show
+    Route::get('/semesters/{id}', [SemesterController::class, 'show'])->name('semesters.show');
 
     // Course Route
     Route::get('/courses', [CourseController::class, 'index'])->name('studentcourses.index');
@@ -63,6 +65,8 @@ Route::group(['prefix' => '/student', 'middleware' => ['role:Student']], functio
     Route::get('/lectures/{lecture}/download', [StudentLectureController::class, 'download'])->name('downloadfile.download');
     // Result Route
     Route::get('/results', [ResultController::class, 'index'])->name('results.index');
+    //profile Routes
+    Route::resource('/profile', ProfileController::class);
 });
 
 Route::group(['prefix' => '/professor', 'middleware' => 'role:Professor'], function () {

@@ -7,9 +7,17 @@
     <div class="container">
         <form action="{{ route('adminsemester.store') }}" method="post" enctype="multipart/form-data">
             @csrf
+            {{-- origin image --}}
+            <figure class="image create">
+                <img class="createimg" src="/images/Decoration2.png">
+            </figure>
+            {{-- inverse image --}}
+            <figure class="image inverse">
+                <img class="inverseimg" src="/images/Decoration2.png">
+            </figure>
             {{-- select year --}}
             <div class="field">
-                <label class="label">Select year</label>
+                <label class="label inputtitle">Select year:</label>
                 <div class="control">
                     <div class="select">
                         <select name="year_id">
@@ -26,7 +34,7 @@
 
             {{-- semester Name --}}
             <div class="field">
-                <label class="label">semester Name</label>
+                <label class="label inputtitle">semester Name:</label>
                 <div class="control">
                     <input class="input {{ $errors->has('name') ? 'is-danger' : '' }}" type="text" name="name"
                         value="{{ old('name') }}">
@@ -37,7 +45,7 @@
             </div>
 
             {{-- semester photo --}}
-            <div class="file">
+            <div id="semesterphoto" class="file has-name is-fullwidth my-5">
                 <label class="file-label">
                     <input class="file-input" type="file" name="photo">
                     <span class="file-cta">
@@ -45,11 +53,14 @@
                             <i class="fas fa-upload"></i>
                         </span>
                         <span class="file-label">
-                            semester photo, Choose an Image…
+                            Choose a photo
                         </span>
                     </span>
+                    <span class="file-name">
+                        No file uploaded
+                    </span>
                 </label>
-                @error('photo')
+                @error('pdf')
                     <p class="help is-danger">{{ $message }}</p>
                 @enderror
             </div>
@@ -57,9 +68,21 @@
             {{-- save button --}}
             <div class="field">
                 <div class="control">
-                    <button class="button is-link">Save semester</button>
+                    <button class="button">Save semester</button>
                 </div>
             </div>
         </form>
     </div>
 @endsection
+@push('script')
+    <script>
+        const fileInput = document.querySelector('#semesterphoto input[type=file]');
+        fileInput.onchange = () => {
+            if (fileInput.files.length > 0) {
+                const fileName = document.querySelector('#semesterphoto .file-name');
+                fileName.textContent = fileInput.files[0].name;
+            }
+        }
+    </script>
+
+@endpush

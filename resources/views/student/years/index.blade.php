@@ -1,23 +1,7 @@
 @extends('layouts.app1')
 
-@section('content header')
-    <div class="container has-text-centered">
-        <h1 class="title">
-            Years
-        </h1>
-        <h2 class="subtitle">
-            Choose year
-        </h2>
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-            <ul>
-                <li><a href="#">Bulma</a></li>
-                <li><a href="#">Documentation</a></li>
-                <li><a href="#">Components</a></li>
-                <li class="is-active"><a href="#" aria-current="page">Breadcrumb</a></li>
-            </ul>
-        </nav>
-    </div>
-@endsection
+@section('title', 'Choose The year')
+@section('subtitle', 'Choose .........')
 
 @section('content')
     <div class="container">
@@ -30,7 +14,7 @@
                                 <img src="{{ $year->photo }}">
                             </div>
                             <div class="media-left">
-                                <figure class="image is-64x64 ml-4">
+                                <figure class="image ml-4">
                                     <img src="/images/Decoration2.png" alt="Placeholder image">
                                 </figure>
                             </div>

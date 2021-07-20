@@ -1,0 +1,79 @@
+.container form .field input {
+    border-color: #d5b361;
+    width: 984px;
+    border-radius: 20px;
+}
+
+.container form .field select {
+    border-color: #d5b361;
+    border-radius: 20px;
+}
+.container form .field textarea {
+    border-color: #d5b361;
+    border-radius: 20px;
+    max-width: 984px;
+    min-width: 0px;
+}
+.container form .file {
+    width: 449px;
+}
+.file-cta {
+    color: white;
+    background-color: #d5b361;
+}
+
+.container form .file .file-label {
+    border-color: #d5b361;
+    border-radius: 20px;
+}
+.position {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 13px;
+}
+.container form .control button {
+    color: white;
+    background-color: #d5b361;
+    border-radius: 10px;
+}
+.container form .create {
+    position: absolute;
+    top: 6px;
+    left: 1150px;
+    width: 250px;
+    height: 251px;
+}
+.container form .create .createimg {
+    width: 250px;
+    height: 251px;
+}
+.container form .inverse {
+    position: absolute;
+    top: 250px;
+    left: 1050px;
+    width: 170px;
+    height: 140px;
+    transform: rotate(82deg);
+}
+.container form .inverse .inverseimg {
+    width: 170px;
+    height: 140px;
+}
+.createcontainer {
+    position: relative;
+    margin-top: -18px;
+}
+.field .inputtitle {
+    color: #221f33;
+    font-size: larger;
+}
+.checkbox {
+    color: #221f33;
+    font-size: large;
+}
+.input,
+.select select,
+.textarea {
+    color: #221f33;
+    font-size: large;
+}

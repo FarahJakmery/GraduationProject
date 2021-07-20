@@ -6,9 +6,17 @@
     <div class="container">
         <form action="{{ route('professors.store') }}" method="post" enctype="multipart/form-data">
             @csrf
+
+            <figure class="image create">
+                <img class="createimg" src="/images/Decoration2.png">
+            </figure>
+            {{-- inverse image --}}
+            <figure class="image inverse">
+                <img class="inverseimg" src="/images/Decoration2.png">
+            </figure>
             {{-- Full Name --}}
             <div class="field">
-                <label class="label">Full Name</label>
+                <label class="label inputtitle">Full Name:</label>
                 <div class="control">
                     <input class="input {{ $errors->has('full_name') ? 'is-danger' : '' }}" type="text" name="full_name"
                         value="{{ old('full_name') }}">
@@ -18,8 +26,74 @@
                 </div>
             </div>
 
+
+            {{-- email --}}
+            <div class="field">
+                <label class="label inputtitle">Email:</label>
+                <div class="control">
+                    <input class="input {{ $errors->has('email') ? 'is-danger' : '' }}" type="text" name="email"
+                        value="{{ old('email') }}">
+                    @error('email')
+                        <p class="help is-danger">{{ $message }}</p>
+                    @enderror
+                </div>
+            </div>
+
+            {{-- password --}}
+
+            <div class="field">
+                <label class="label inputtitle">PassWord:</label>
+                <div class="control">
+                    <input class="input {{ $errors->has('password') ? 'is-danger' : '' }}" type="password" name="password"
+                        value="{{ old('password') }}">
+                    @error('password')
+                        <p class="help is-danger">{{ $message }}</p>
+                    @enderror
+                </div>
+            </div>
+
+            {{-- phone --}}
+            <div class="field">
+                <label class="label inputtitle">Phone:</label>
+                <div class="control">
+                    <input class="input {{ $errors->has('phone') ? 'is-danger' : '' }}" type="text" name="phone"
+                        value="{{ old('phone') }}">
+                    @error('phone')
+                        <p class="help is-danger">{{ $message }}</p>
+                    @enderror
+                </div>
+            </div>
+            {{-- Description --}}
+            <div class="field">
+                <label class="label  inputtitle">Description:</label>
+                <div class="control">
+                    <textarea class="textarea {{ $errors->has('description') ? 'is-danger' : '' }}" name="description"
+                        placeholder="Lecture description goes here ...">{{ old('description') }}</textarea>
+                    @error('description')
+                        <p class="help is-danger">{{ $message }}</p>
+                    @enderror
+                </div>
+            </div>
+
+            {{-- select  role --}}
+            <div class="field">
+                <label class="label inputtitle">Select Role:</label>
+                <div class="control">
+                    <div class="select">
+                        <select name="role_id">
+                            @foreach ($roles as $role)
+                                <option value="{{ $role->id }}">{{ $role->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    @error('role_id')
+                        <p class="help is-danger">{{ $message }}</p>
+                    @enderror
+                </div>
+            </div>
+
             {{-- The professor's Photo --}}
-            <div id="photo_upload" class="has-name is-fullwidth">
+            <div id="photo_upload" class="has-name is-fullwidth my-4">
                 <label class="file-label">
                     <input class="file-input" type="file" name="photo">
                     <span class="file-cta">
@@ -39,74 +113,10 @@
                 @enderror
             </div>
 
-            {{-- email --}}
-            <div class="field">
-                <label class="label">Email</label>
-                <div class="control">
-                    <input class="input {{ $errors->has('email') ? 'is-danger' : '' }}" type="text" name="email"
-                        value="{{ old('email') }}">
-                    @error('email')
-                        <p class="help is-danger">{{ $message }}</p>
-                    @enderror
-                </div>
-            </div>
-
-            {{-- password --}}
-            <div class="field">
-                <label class="label">PassWord</label>
-                <div class="control">
-                    <input class="input {{ $errors->has('password') ? 'is-danger' : '' }}" type="text" name="password"
-                        value="{{ old('password') }}">
-                    @error('password')
-                        <p class="help is-danger">{{ $message }}</p>
-                    @enderror
-                </div>
-            </div>
-
-            {{-- phone --}}
-            <div class="field">
-                <label class="label">Phone</label>
-                <div class="control">
-                    <input class="input {{ $errors->has('phone') ? 'is-danger' : '' }}" type="text" name="phone"
-                        value="{{ old('phone') }}">
-                    @error('phone')
-                        <p class="help is-danger">{{ $message }}</p>
-                    @enderror
-                </div>
-            </div>
-
-            {{-- select  role --}}
-            <div class="field">
-                <label class="label">Select Role</label>
-                <div class="control">
-                    <div class="select">
-                        <select name="role_id">
-                            @foreach ($roles as $role)
-                                <option value="{{ $role->id }}">{{ $role->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    @error('role_id')
-                        <p class="help is-danger">{{ $message }}</p>
-                    @enderror
-                </div>
-            </div>
-            {{-- Description --}}
-            <div class="field">
-                <label class="label">Description</label>
-                <div class="control">
-                    <input class="input {{ $errors->has('description') ? 'is-danger' : '' }}" type="text"
-                        name="description" value="{{ old('description') }}">
-                    @error('description')
-                        <p class="help is-danger">{{ $message }}</p>
-                    @enderror
-                </div>
-            </div>
-
             {{-- save button --}}
             <div class="field">
                 <div class="control">
-                    <button class="button is-link">save</button>
+                    <button class="button">Save Professor</button>
                 </div>
             </div>
         </form>
@@ -122,6 +132,5 @@
                 fileName.textContent = fileInput.files[0].name;
             }
         }
-
     </script>
 @endpush

@@ -1,0 +1,56 @@
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    font-size: medium;
+    box-shadow: 0 8px 10px #0a1516c9;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active,
+.accordion:hover {
+    background-color: #242136;
+    color: #d5b361;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+    padding: 0 18px;
+    background-color: white;
+    display: none;
+    overflow: hidden;
+    color: #242136;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+/* Style the Show Lecture link */
+.stylelink {
+    color: #242136;
+}
+.stylelink:hover {
+    color: #d5b361;
+}
+/* Style the button for Show Lecture */
+.buttonstyle {
+    border: 2px solid #242136;
+    border-radius: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+/* add icon */
+.accordion:after {
+    content: "\02795"; /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: #d5b361;
+    float: right;
+    margin-left: 5px;
+}
+.active:after {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
+}

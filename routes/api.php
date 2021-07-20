@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\LoginController;
 use App\Http\Controllers\Api\CourseController;
 use App\Http\Controllers\Api\LectureController;
+use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\RegisterController;
 use App\Http\Controllers\Api\SearchController;
 use App\Http\Controllers\Api\SemesterController;
@@ -26,6 +27,10 @@ Route::post('/login', [LoginController::class, 'login']);
 
 // Protected Routes
 Route::group(['middleware' => 'auth:sanctum'], function () {
+
+    // profile  Api
+    Route::get('/show/{id}', [ProfileController::class, 'show']);
+    Route::put('/update/{id}', [ProfileController::class, 'update']);
 
     // Search Api
     Route::get('/search', [SearchController::class, 'search']);
