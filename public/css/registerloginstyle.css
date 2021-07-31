@@ -1,0 +1,151 @@
+body {
+    background-color: #e7e69e;
+}
+form .authinput {
+    border-radius: 20px;
+    width: 250px;
+    border-color: #d5b361;
+    /* display: inline; */
+    margin: 0px 13px;
+    border-top: none;
+}
+.authcontainer {
+    width: 700px;
+    height: 550px;
+    border-radius: 20px;
+    border-color: #d5b361;
+    background-color: #221f33;
+}
+.subcontainer {
+    width: 600px;
+    position: relative;
+}
+.authtitle {
+    color: #d5b361;
+    font-size: larger;
+}
+
+.authcontainer .subcontainer form {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 700px;
+    padding: 25px;
+    margin: -27px 10px;
+}
+.authcontainer .subcontainer form .picture .authphoto {
+    width: 532px;
+    height: 50px;
+    margin: 16px 16px;
+    padding: none;
+    background-color: white;
+}
+
+.authcontainer .subcontainer form .picture .authphoto svg {
+    width: 30px;
+    height: 30px;
+}
+.authcontainer .subcontainer form .authrole {
+    margin-top: 10px;
+    margin-left: 20px;
+}
+.authcontainer .subcontainer form .authrole {
+    margin-top: 10px;
+    margin-left: 20px;
+}
+.authcontainer .subcontainer form .authyear {
+    margin-left: 12px;
+}
+.authcontainer .subcontainer form .regbutton {
+    display: flex;
+    justify-content: flex-start;
+    justify-content: space-around;
+    margin-top: 16px;
+    padding-left: 16px;
+}
+.authcontainer .subcontainer form .regbutton .reg {
+    background-color: #d5b361;
+    color: #221f33;
+    border-color: #d5b361;
+    margin-left: 212px;
+    width: 150px;
+    height: 40px;
+    text-align: end;
+    border-radius: 20px;
+    padding: 0px auto;
+    margin-top: -15px;
+}
+.authcontainer .subcontainer form .regbutton .alreadyreg {
+    margin-top: -10px;
+}
+.signup {
+    color: #d5b361;
+    text-align: center;
+    font-size: 40px;
+    margin-top: -10px;
+}
+.signin {
+    color: #d5b361;
+    text-align: center;
+    font-size: 29px;
+    margin-top: -25px;
+    left: -12px;
+    padding-right: 105px;
+}
+.logcontainer .subcontainer form .loginput {
+    width: 374px;
+}
+
+.logcontainer .subcontainer form .logdiv1 .loglabel {
+    color: #d5b361;
+    margin: 0px;
+    font-size: larger;
+}
+.logcontainer .subcontainer form .logdiv2 .loglabel {
+    color: #d5b361;
+    font-size: larger;
+    margin: 0px;
+}
+
+.logcontainer .subcontainer form .logdiv1 {
+    margin-top: -5px;
+}
+.logcontainer .subcontainer form .logdiv2 {
+    margin-top: 20px;
+}
+
+.logcontainer .subcontainer form .remeber {
+    position: absolute;
+    left: 30px;
+    top: 190px;
+    color: #d5b361;
+    font-size: large;
+}
+.logcontainer .subcontainer form .forgotpassword {
+    position: absolute;
+    left: 110px;
+    top: 221px;
+    color: #d5b361;
+    font-size: large;
+    padding: 0px 60px;
+}
+
+.logcontainer .subcontainer form .forgotpassword .logbutton {
+    position: absolute;
+    left: 250px;
+    width: 95px;
+    height: 37px;
+    background-color: #d5b361;
+    color: #221f33;
+    border-color: #d5b361;
+    border-radius: 20px;
+
+    text-align: center;
+    font-size: large;
+    padding: 10px 16px;
+}
+.logcontainer {
+    width: 500px;
+    height: 300px;
+    background-color: #221f33;
+}
