@@ -17,7 +17,7 @@
 
             {{-- Course Name --}}
             <div class="field">
-                <label class="label inputtitle">Course Name:</label>
+                <label class="label inputtitle">Course Name</label>
                 <div class="control">
                     <input class="input {{ $errors->has('name') ? 'is-danger' : '' }}" type="text" name="name"
                         value="{{ old('name') }}">
@@ -29,7 +29,7 @@
 
             {{-- Course description --}}
             <div class="field">
-                <label class="label  inputtitle">Description:</label>
+                <label class="label  inputtitle">Description About This Course</label>
                 <div class="control">
                     <textarea class="textarea {{ $errors->has('description') ? 'is-danger' : '' }}" name="description"
                         placeholder="course description goes here ...">{{ old('description') }}</textarea>
@@ -39,47 +39,46 @@
                 </div>
             </div>
 
-
-            {{-- select semester --}}
-            <div class="field">
-                <label class="label inputtitle">Select Semester:</label>
-                <div class="control">
-                    <div class="select">
-                        <select name="semester_id">
-                            @foreach ($semesters as $semester)
-                                <option value="{{ $semester->id }}">{{ $semester->name }}.{{ $semester->year->name }}
-                                </option>
-                            @endforeach
-                        </select>
+            <div class="position">
+                {{-- select semester --}}
+                <div class="field">
+                    <label class="label inputtitle ">Select Semester</label>
+                    <div class="control">
+                        <div class="select">
+                            <select name="semester_id">
+                                @foreach ($semesters as $semester)
+                                    <option value="{{ $semester->id }}">
+                                        {{ $semester->name }}.{{ $semester->year->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        @error('semester_id')
+                            <p class="help is-danger">{{ $message }}</p>
+                        @enderror
                     </div>
-                    @error('semester_id')
-                        <p class="help is-danger">{{ $message }}</p>
-                    @enderror
+                </div>
+
+                {{-- select  professor --}}
+                <div class="field selectprof">
+                    <label class="label inputtitle ">Select Professor</label>
+                    <div class="control">
+                        <div class="select">
+                            <select name="professor_id">
+                                @foreach ($professors as $professor)
+                                    <option value="{{ $professor->id }}">{{ $professor->user->full_name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        @error('professor_id')
+                            <p class="help is-danger">{{ $message }}</p>
+                        @enderror
+                    </div>
                 </div>
             </div>
-
-            {{-- select  professor --}}
-            <div class="field">
-                <label class="label inputtitle">Select Professor:</label>
-                <div class="control">
-                    <div class="select">
-                        <select name="professor_id">
-                            @foreach ($professors as $professor)
-                                <option value="{{ $professor->id }}">{{ $professor->user->full_name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    @error('professor_id')
-                        <p class="help is-danger">{{ $message }}</p>
-                    @enderror
-                </div>
-            </div>
-
-
-
 
             {{-- Course logo --}}
-            <div id="logo_upload" class="file has-name is-fullwidth my-4">
+            <div id="logo_upload" class="file has-name is-fullwidth my-5">
                 <label class="file-label">
                     <input class="file-input" type="file" name="logo">
                     <span class="file-cta">
@@ -94,7 +93,7 @@
                         No file uploaded
                     </span>
                 </label>
-                @error('pdf')
+                @error('logo')
                     <p class="help is-danger">{{ $message }}</p>
                 @enderror
             </div>

@@ -8,6 +8,7 @@ use App\Models\QuizResult;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 
 class ResultController extends Controller
 {
@@ -18,13 +19,15 @@ class ResultController extends Controller
      */
     public function index()
     {
-        $users = User::whereHas('student', function (Builder $query) use ($user_id) {
-            $query->whereHas('courses', function (Builder $q) use ($user_id) {
-                $q->whereHas('quizzes', function (Builder $q1) use ($user_id) {
-                    $q1->where('quizresults', $user_id);
-                });
-            });
-        })->get();
+        // $users = User::whereHas('student', function (Builder $query) use ($user_id) {
+        //     $query->whereHas('courses', function (Builder $q) use ($user_id) {
+        //         $q->whereHas('quizzes', function (Builder $q1) use ($user_id) {
+        //             $q1->where('quizresults', $user_id);
+        //         });
+        //     });
+        // })->get();
+        $courses = Course::where("professor_id", Auth::user()->professor->id)->get();
+        return view("professor.results.index", ['courses' => $courses]);
     }
 
     /**

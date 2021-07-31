@@ -6,10 +6,17 @@
         <form action="{{ route('options.update', $option->id) }}" method="post">
             <input name="_method" type="hidden" value="PUT">
             @csrf
-
+            {{-- origin image --}}
+            <figure class="image create">
+                <img class="createimg" src="/images/Decoration2.png">
+            </figure>
+            {{-- inverse image --}}
+            <figure class="image inverse">
+                <img class="inverseimg" src="/images/Decoration2.png">
+            </figure>
             {{-- The Name of the Question that the option belongs to --}}
             <div class="field">
-                <label class="label">Question</label>
+                <label class="label inputtitle">Question</label>
                 <div class="control">
                     <div class="select">
                         <select name="question_id">
@@ -30,7 +37,7 @@
 
             {{-- The Text of the Option --}}
             <div class="field">
-                <label class="label">Option Text</label>
+                <label class="label inputtitle">Option Text</label>
                 <div class="control">
                     <input class="input {{ $errors->has('option_text') ? 'is-danger' : '' }}" type="text"
                         name="option_text" placeholder="Option Text ..."
@@ -53,7 +60,7 @@
             {{-- The Submit Button --}}
             <div class="field">
                 <div class="control">
-                    <button class="button is-link">Modify Option</button>
+                    <button class="button mt-3">Modify Option</button>
                 </div>
             </div>
 

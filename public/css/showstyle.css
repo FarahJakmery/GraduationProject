@@ -1,0 +1,60 @@
+.showcontainer .columns .column .labelsize {
+    color: #221f33;
+    font-size: larger;
+}
+.showcontainer .columns .column .contentfont {
+    color: #221f33;
+    font-size: large;
+    margin-bottom: 0px;
+}
+.showcontainer .columns .column .gold {
+    background-color: #d5b361;
+    margin-top: 0px;
+}
+.showcontainer .show {
+    position: absolute;
+    top: 6px;
+    left: 1150px;
+    width: 250px;
+    height: 251px;
+}
+.showcontainer {
+    position: relative;
+    margin-top: -30px;
+}
+.show .showimg {
+    width: 250px;
+    height: 251px;
+}
+.showcontainer .showinverse {
+    position: absolute;
+    top: 325px;
+    left: 30px;
+    width: 170px;
+    height: 140px;
+    transform: rotate(82deg);
+}
+.showcontainer .showinverse .inverseshow {
+    width: 170px;
+    height: 140px;
+}
+.showcontainer .columns .colpadding {
+    padding: 0px 130px 0px 130px;
+}
+.showcontainer .columns .column {
+    padding: 0px 130px 0px 130px;
+}
+.showcontainer .columns .optionfont {
+    /* margin-top: 60px; */
+    color: #221f33;
+    font-size: large;
+    margin: 0px;
+}
+.showcontainer .columns .column .score {
+    width: 240px;
+    height: 50px;
+    color: #221f33;
+    padding: 10px;
+    background-color: #d5b361;
+    border-radius: 20px;
+}

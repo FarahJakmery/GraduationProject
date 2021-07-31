@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{ asset('css/StudentStyle/semesterstyle.css') }}">
     <link rel="stylesheet" href="{{ asset('css/StudentStyle/coursestyle.css') }}">
     <link rel="stylesheet" href="{{ asset('css/createandeditstyle.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/showstyle.css') }}">
     <link rel="stylesheet" href="{{ asset('css/StudentStyle/showcoursestyle.css') }}">
     @yield('style')
 </head>

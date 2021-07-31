@@ -66,7 +66,7 @@
 
             <div class="field">
                 <div class="control">
-                    <button class="button ">Save Question</button>
+                    <button class="button ">Save Quiz</button>
                 </div>
             </div>
         </form>

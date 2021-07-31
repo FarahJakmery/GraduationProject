@@ -17,7 +17,7 @@
             </figure>
             {{-- year Name --}}
             <div class="field">
-                <label class="label inputtitle">Year Name:</label>
+                <label class="label inputtitle">Year Name</label>
                 <div class="control">
                     <input class="input {{ $errors->has('name') ? 'is-danger' : '' }}" type="text" name="name"
                         value="{{ old('name') }}">

@@ -15,7 +15,7 @@
             </figure>
             {{-- Full Name --}}
             <div class="field">
-                <label class="label inputtitle">Full Name:</label>
+                <label class="label inputtitle">Full Name</label>
                 <div class="control">
                     <input class="input {{ $errors->has('full_name') ? 'is-danger' : '' }}" type="text" name="full_name"
                         value="{{ old('full_name') }}">
@@ -26,7 +26,7 @@
             </div>
             {{-- email --}}
             <div class="field">
-                <label class="label inputtitle">Email:</label>
+                <label class="label inputtitle">Email</label>
                 <div class="control">
                     <input class="input {{ $errors->has('email') ? 'is-danger' : '' }}" type="text" name="email"
                         value="{{ old('email') }}">
@@ -38,7 +38,7 @@
 
             {{-- password --}}
             <div class="field">
-                <label class="label inputtitle">PassWord:</label>
+                <label class="label inputtitle">PassWord</label>
                 <div class="control">
                     <input class="input {{ $errors->has('password') ? 'is-danger' : '' }}" type="password" name="password"
                         value="{{ old('password') }}">
@@ -50,7 +50,7 @@
 
             {{-- phone --}}
             <div class="field">
-                <label class="label inputtitle">Phone:</label>
+                <label class="label inputtitle">Phone</label>
                 <div class="control">
                     <input class="input {{ $errors->has('phone') ? 'is-danger' : '' }}" type="text" name="phone"
                         value="{{ old('phone') }}">
@@ -59,40 +59,41 @@
                     @enderror
                 </div>
             </div>
-            {{-- Acadimec Year --}}
-            <div class="field">
-                <label class="label inputtitle">Academic Year:</label>
-                <div class="control">
-                    <div class="select">
-                        <select name="year_id">
-                            @foreach ($years as $year)
-                                <option value="{{ $year->id }}">{{ $year->name }}</option>
-                            @endforeach
-                        </select>
+            <div class="position">
+                {{-- Acadimec Year --}}
+                <div class="field">
+                    <label class="label inputtitle">Academic Year</label>
+                    <div class="control">
+                        <div class="select">
+                            <select name="year_id">
+                                @foreach ($years as $year)
+                                    <option value="{{ $year->id }}">{{ $year->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        @error('year_id')
+                            <p class="help is-danger">{{ $message }}</p>
+                        @enderror
                     </div>
-                    @error('year_id')
-                        <p class="help is-danger">{{ $message }}</p>
-                    @enderror
+                </div>
+
+                {{-- select  role --}}
+                <div class="field selectprof">
+                    <label class="label inputtitle">Select Role</label>
+                    <div class="control">
+                        <div class="select">
+                            <select name="role_id">
+                                @foreach ($roles as $role)
+                                    <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        @error('role_id')
+                            <p class="help is-danger">{{ $message }}</p>
+                        @enderror
+                    </div>
                 </div>
             </div>
-
-            {{-- select  role --}}
-            <div class="field">
-                <label class="label inputtitle">Select Role:</label>
-                <div class="control">
-                    <div class="select">
-                        <select name="role_id">
-                            @foreach ($roles as $role)
-                                <option value="{{ $role->id }}">{{ $role->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    @error('role_id')
-                        <p class="help is-danger">{{ $message }}</p>
-                    @enderror
-                </div>
-            </div>
-
             {{-- The Student's Photo --}}
             <div id="photo_upload" class="has-name is-fullwidth my-4">
                 <label class="file-label">

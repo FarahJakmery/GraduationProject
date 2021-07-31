@@ -10,6 +10,7 @@
             <thead>
                 {{-- Table Row --}}
                 <tr>
+                    {{-- <th>Student Name</th> --}}
                     <th>Course Name</th>
                     <th>Quiz Name</th>
                     <th>Result</th>
@@ -19,15 +20,15 @@
 
             {{-- Table Body --}}
             <tbody>
-                @foreach ($results as $result)
-                    @if ($result->user_id === Auth::user()->id)
-                        <tr>
-                            <th>{{ $result->quiz->course->name }}</th>
-                            <th>{{ $result->quiz->name }}</th>
-                            <th>{{ $result->quiz_result }}</th>
-                            <th>{{ $result->created_at }}</th>
-                        </tr>
-                    @endif
+                {{-- @foreach ($results as $result)
+                    @if ($result->user_id === Auth::user()->id) --}}
+                <tr>
+                    <th>{{ $result->quiz->course->name }}</th>
+                    <th>{{ $result->quiz->name }}</th>
+                    <th>{{ $result->quiz_result }}</th>
+                    <th>{{ $result->created_at }}</th>
+                </tr>
+                {{-- @endif --}}
                 @endforeach
             </tbody>
         </table>

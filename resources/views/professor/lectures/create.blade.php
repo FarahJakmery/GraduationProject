@@ -6,7 +6,7 @@
     <div class="container createcontainer">
         <form action="{{ route('lectures.store') }}" method="post" enctype="multipart/form-data">
             @csrf
-
+            {{-- origin image --}}
             <figure class="image create">
                 <img class="createimg" src="/images/Decoration2.png">
             </figure>
@@ -16,7 +16,7 @@
             </figure>
             {{-- The Name of the Course that the Lecture belongs to --}}
             <div class="field">
-                <label class="label inputtitle">Course:</label>
+                <label class="label inputtitle">Course</label>
                 <div class="control">
                     <div class="select">
                         <select name="course_id">
@@ -34,7 +34,7 @@
 
             {{-- The Title of the Lecture --}}
             <div class="field">
-                <label class="label  inputtitle">Title:</label>
+                <label class="label  inputtitle">Title</label>
                 <div class="control">
                     <input class="input {{ $errors->has('name') ? 'is-danger' : '' }}" type="text" name="name"
                         placeholder="Lecture Title ..." value="{{ old('name') }}">
@@ -49,7 +49,7 @@
 
             {{-- The Description of the Lecture --}}
             <div class="field">
-                <label class="label  inputtitle">Description:</label>
+                <label class="label  inputtitle">Description</label>
                 <div class="control">
                     <textarea class="textarea {{ $errors->has('description') ? 'is-danger' : '' }}" name="description"
                         placeholder="Lecture description goes here ...">{{ old('description') }}</textarea>

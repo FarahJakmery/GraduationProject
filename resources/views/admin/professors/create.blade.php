@@ -16,7 +16,7 @@
             </figure>
             {{-- Full Name --}}
             <div class="field">
-                <label class="label inputtitle">Full Name:</label>
+                <label class="label inputtitle">Full Name</label>
                 <div class="control">
                     <input class="input {{ $errors->has('full_name') ? 'is-danger' : '' }}" type="text" name="full_name"
                         value="{{ old('full_name') }}">
@@ -29,7 +29,7 @@
 
             {{-- email --}}
             <div class="field">
-                <label class="label inputtitle">Email:</label>
+                <label class="label inputtitle">Email</label>
                 <div class="control">
                     <input class="input {{ $errors->has('email') ? 'is-danger' : '' }}" type="text" name="email"
                         value="{{ old('email') }}">
@@ -42,7 +42,7 @@
             {{-- password --}}
 
             <div class="field">
-                <label class="label inputtitle">PassWord:</label>
+                <label class="label inputtitle">Password</label>
                 <div class="control">
                     <input class="input {{ $errors->has('password') ? 'is-danger' : '' }}" type="password" name="password"
                         value="{{ old('password') }}">
@@ -54,7 +54,7 @@
 
             {{-- phone --}}
             <div class="field">
-                <label class="label inputtitle">Phone:</label>
+                <label class="label inputtitle">Phone</label>
                 <div class="control">
                     <input class="input {{ $errors->has('phone') ? 'is-danger' : '' }}" type="text" name="phone"
                         value="{{ old('phone') }}">
@@ -65,10 +65,10 @@
             </div>
             {{-- Description --}}
             <div class="field">
-                <label class="label  inputtitle">Description:</label>
+                <label class="label  inputtitle">Description</label>
                 <div class="control">
                     <textarea class="textarea {{ $errors->has('description') ? 'is-danger' : '' }}" name="description"
-                        placeholder="Lecture description goes here ...">{{ old('description') }}</textarea>
+                        placeholder="professor description goes here ...">{{ old('description') }}</textarea>
                     @error('description')
                         <p class="help is-danger">{{ $message }}</p>
                     @enderror
@@ -76,43 +76,44 @@
             </div>
 
             {{-- select  role --}}
-            <div class="field">
-                <label class="label inputtitle">Select Role:</label>
-                <div class="control">
-                    <div class="select">
-                        <select name="role_id">
-                            @foreach ($roles as $role)
-                                <option value="{{ $role->id }}">{{ $role->name }}</option>
-                            @endforeach
-                        </select>
+            <div class="position">
+                <div class="field">
+                    <label class="label inputtitle">Select Role</label>
+                    <div class="control">
+                        <div class="select">
+                            <select name="role_id">
+                                @foreach ($roles as $role)
+                                    <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        @error('role_id')
+                            <p class="help is-danger">{{ $message }}</p>
+                        @enderror
                     </div>
-                    @error('role_id')
+                </div>
+
+                {{-- The professor's Photo --}}
+                <div id="photo_upload" class="has-name is-fullwidth  pos">
+                    <label class="file-label">
+                        <input class="file-input" type="file" name="photo">
+                        <span class="file-cta">
+                            <span class="file-icon">
+                                <i class="fas fa-upload"></i>
+                            </span>
+                            <span class="file-label">
+                                Choose a picture…
+                            </span>
+                        </span>
+                        <span class="file-name">
+                            File-Name
+                        </span>
+                    </label>
+                    @error('photo')
                         <p class="help is-danger">{{ $message }}</p>
                     @enderror
                 </div>
             </div>
-
-            {{-- The professor's Photo --}}
-            <div id="photo_upload" class="has-name is-fullwidth my-4">
-                <label class="file-label">
-                    <input class="file-input" type="file" name="photo">
-                    <span class="file-cta">
-                        <span class="file-icon">
-                            <i class="fas fa-upload"></i>
-                        </span>
-                        <span class="file-label">
-                            Choose a picture…
-                        </span>
-                    </span>
-                    <span class="file-name">
-                        File-Name
-                    </span>
-                </label>
-                @error('photo')
-                    <p class="help is-danger">{{ $message }}</p>
-                @enderror
-            </div>
-
             {{-- save button --}}
             <div class="field">
                 <div class="control">

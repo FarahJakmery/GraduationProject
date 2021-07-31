@@ -13,6 +13,7 @@ use App\Http\Controllers\Professor\QuestionController;
 use App\Http\Controllers\Professor\QuizController;
 use App\Http\Controllers\Professor\LectureController;
 use App\Http\Controllers\Professor\OptionController;
+use App\Http\Controllers\Professor\ProfileController as ProfessorProfileController;
 use App\Http\Controllers\Student\ResultController as ProfessorResultController;
 // Student
 use App\Http\Controllers\Student\YearController;
@@ -70,6 +71,8 @@ Route::group(['prefix' => '/student', 'middleware' => ['role:Student']], functio
 });
 
 Route::group(['prefix' => '/professor', 'middleware' => 'role:Professor'], function () {
+    //profile Routes
+    Route::resource('/profprofile', ProfessorProfileController::class);
     // lectures Routes
     Route::resource('/lectures', LectureController::class);
 

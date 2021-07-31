@@ -4,7 +4,7 @@
 @section('subtitle', 'Choose .........')
 
 @section('content')
-    <div class="container mr-2">
+    <div class="container ">
         <div class="columns is-centered ">
             @foreach ($semesters as $semester)
                 <div class="column is-6">

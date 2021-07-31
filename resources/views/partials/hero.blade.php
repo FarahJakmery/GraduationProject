@@ -67,27 +67,26 @@
 
                             {{-- Professor NavBar --}}
                             @role('Professor')
-                            <a class="navbar-item {{ Route::currentRouteName() == 'lectures.index' ? 'is-active' : '' }}"
+                            <a class="navbar-item tab-color {{ Route::currentRouteName() == 'lectures.index' ? 'is-active' : '' }}"
                                 href="{{ route('lectures.index') }}">Lecture</a>
-                            <a class="navbar-item {{ Route::currentRouteName() == 'quizzes.index' ? 'is-active' : '' }}"
+                            <a class="navbar-item  tab-color{{ Route::currentRouteName() == 'quizzes.index' ? 'is-active' : '' }}"
                                 href="{{ route('quizzes.index') }}">Quiz</a>
-                            <a class="navbar-item {{ Route::currentRouteName() == 'questions.index' ? 'is-active' : '' }}"
+                            <a class="navbar-item tab-color{{ Route::currentRouteName() == 'questions.index' ? 'is-active' : '' }}"
                                 href="{{ route('questions.index') }}">Question Bank</a>
-                            <a class="navbar-item {{ Route::currentRouteName() == 'options.index' ? 'is-active' : '' }}"
+                            <a class="navbar-item tab-color {{ Route::currentRouteName() == 'options.index' ? 'is-active' : '' }}"
                                 href="{{ route('options.index') }}">Option</a>
-                            <a class="navbar-item {{ Route::currentRouteName() == 'options.index' ? 'is-active' : '' }}"
-                                href="{{ route('options.index') }}">Option</a>
-                            <a class="navbar-item {{ Route::currentRouteName() == 'professorresults.index' ? 'is-active' : '' }}"
+
+                            <a class="navbar-item tab-color{{ Route::currentRouteName() == 'professorresults.index' ? 'is-active' : '' }}"
                                 href="{{ route('professorresults.index') }}">Result</a>
                             @endrole
 
                             {{-- Admin NavBar --}}
                             @role('Admin')
-                            <a class="navbar-item {{ Route::currentRouteName() == 'courses.index' ? 'is-active' : '' }}"
+                            <a class="navbar-item tab-color{{ Route::currentRouteName() == 'courses.index' ? 'is-active' : '' }}"
                                 href="{{ route('courses.index') }}">Courses</a>
-                            <a class="navbar-item {{ Route::currentRouteName() == 'professors.index' ? 'is-active' : '' }}"
+                            <a class="navbar-item tab-color{{ Route::currentRouteName() == 'professors.index' ? 'is-active' : '' }}"
                                 href="{{ route('professors.index') }}">Professor</a>
-                            <a class="navbar-item {{ Route::currentRouteName() == 'studentss.index' ? 'is-active' : '' }}"
+                            <a class="navbar-item tab-color{{ Route::currentRouteName() == 'studentss.index' ? 'is-active' : '' }}"
                                 href="{{ route('students.index') }}">Students</a>
                             @endrole
 
