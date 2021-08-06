@@ -34,7 +34,7 @@ class StudentController extends Controller
     {
         $roles = Role::all();
         $years = Year::all();
-        return view('admin.students.create' ,['years' => $years,'roles'=>$roles]);
+        return view('admin.students.create', ['years' => $years, 'roles' => $roles]);
     }
 
     /**
@@ -60,7 +60,7 @@ class StudentController extends Controller
         $user->email     = $request->email;
         $user->password  = Hash::make($request->password);
         $user->phone     = $request->phone;
-        
+
         $file = $request->file('photo');
         $url = '/storage/photo' . $request->id . '.' . $file->extension();
 
@@ -95,7 +95,8 @@ class StudentController extends Controller
     public function show($id)
     {
         $student = Student::find($id);
-        return view('admin.students.show', ['student' => $student]);
+        $role = Role::first();
+        return view('admin.students.show', ['student' => $student, 'role' => $role]);
     }
 
     /**
@@ -109,7 +110,7 @@ class StudentController extends Controller
         $student = Student::find($id);
         $roles = Role::all();
         $years = Year::all();
-        return view('admin.students.edit' ,['years' => $years,'roles'=>$roles,'student'=>$student]);
+        return view('admin.students.edit', ['years' => $years, 'roles' => $roles, 'student' => $student]);
     }
 
     /**
@@ -136,7 +137,7 @@ class StudentController extends Controller
         $user->email     = $request->email;
         $user->password  = Hash::make($request->password);
         $user->phone     = $request->phone;
-        
+
         $file = $request->file('photo');
         $url = '/storage/photo' . $request->id . '.' . $file->extension();
 

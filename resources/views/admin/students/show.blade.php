@@ -1,32 +1,76 @@
-@extends('layouts.app1')
+@extends('layouts.app2')
 
-@section('title', 'The Info About ' . $student->user->full_name . ' :')
 @section('content')
-    <div class="columns">
-        <div class="column is-4">
-            <div class="card">
-                <div class="card">
-                    <div class="card-image">
-                        <figure class="image is-4by3">
-                            <img src="{{ $student->user->photo }}" alt="Placeholder image">
-                        </figure>
-                    </div>
-                </div>
-            </div>
+    <div class="container profileContainer">
+
+        {{-- User Image --}}
+        <div class="profileimage mb-4">
+            <img src="{{ $student->user->photo }}">
         </div>
-        <div class="column is-8">
+
+        {{-- User Info Card --}}
+        <div class="card profilecard">
+
             <div class="card-content">
+                {{-- Student Name --}}
+                <h5 class="title is-3 username has-text-centered">{{ $student->user->full_name }}</h5>
+
                 <div class="media">
-                    <div class="media-content">
-                        <p class="title is-3">{{ $student->user->full_name }}</p>
-                        <p class="title is-4">{{ $student->year_id }}</p>
-                        <p class="subtitle is-5">{{ $student->user->phone }}</p>
-                        <p class="subtitle is-5">{{ $student->user->email }}</p>
+                    <div class="media-content has-text-left">
+                        {{-- Acadimac Year --}}
+                        <span class="icon-text">
+                            <span class="icon icon-color">
+                                <i class="far fa-calendar-alt"></i>
+                            </span>
+                            @if ($student->year_id == 1)
+                                <span class="profileSubtitle is-5">First Year</span>
+                            @elseif ($student->year_id == 2)
+                                <span class="profileSubtitle is-5">Second Year</span>
+                            @elseif ($student->year_id == 3)
+                                <span class="profileSubtitle is-5">Third Year</span>
+                            @elseif ($student->year_id == 4)
+                                <span class="profileSubtitle is-5">Fourth Year</span>
+                            @elseif ($student->year_id == 5)
+                                <span class="profileSubtitle is-5">Fifth Year</span>
+                            @endif
+                        </span><br><br>
+
+                        {{-- Role --}}
+                        <span class="icon-text">
+                            <span class="icon icon-color">
+                                <i class="fas fa-user-graduate"></i>
+                            </span>
+                            <span class="profileSubtitle is-5">{{ $role->name }}</span>
+                        </span><br><br>
+
+
+                        {{-- Email --}}
+                        <span class="icon-text">
+                            <span class="icon icon-color">
+                                <i class="far fa-envelope-open"></i>
+                            </span>
+                            <span class="profileSubtitle is-5">{{ $student->user->email }}</span>
+                        </span><br><br>
+
+                        {{-- Phone number --}}
+                        <span class="icon-text">
+                            <span class="icon icon-color">
+                                <i class="fas fa-mobile-alt"></i>
+                            </span>
+                            <span class="profileSubtitle is-5">{{ $student->user->phone }}</span>
+                        </span>
+
                     </div>
                 </div>
             </div>
+
+            {{-- Edit Button --}}
+            <a href="{{ route('students.edit', $student->user->id) }}">
+                <button class="button profile-button">
+                    Edit your Info
+                </button>
+            </a>
         </div>
 
     </div>
-
 @endsection

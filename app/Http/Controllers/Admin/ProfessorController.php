@@ -92,7 +92,8 @@ class ProfessorController extends Controller
     public function show($id)
     {
         $professor = Professor::find($id);
-        return view('admin.professors.show', ['professor' => $professor]);
+        $roles = $professor->user->getRoleNames()->first();
+        return view('admin.professors.show', ['professor' => $professor, 'roles' => $roles]);
     }
 
     /**

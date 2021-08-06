@@ -28,7 +28,7 @@
 
     @include('partials.messages')
 
-    <section class="section">
+    <section class="section profilesection">
         @yield('content')
     </section>
 
