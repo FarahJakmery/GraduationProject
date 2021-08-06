@@ -24,6 +24,7 @@
 
 .tab-color {
     color: #d5b361;
+    font-size: larger;
 }
 
 .titlecolor {
@@ -37,6 +38,8 @@
 .logoImage {
     height: 100px;
     width: 200px;
+    padding-top: 10px;
+    margin-left: -35px;
 }
 
 .navbar-brand {
