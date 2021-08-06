@@ -1,39 +1,79 @@
 @extends('layouts.app1')
 
-@section('title', 'Profile Page')
 @section('content')
-    <div class="container">
+    <div class="container profileContainer">
         <div class="columns">
             <div class="column is-12">
+                {{-- User Image --}}
+                <div class="profileimage mb-4">
+                    <img src="{{ $user->photo }}">
+                </div>
+
                 <div class="card profilecard">
 
                     <div class="card-content">
+                        {{-- Student Name --}}
+                        <h5 class="title is-3 username has-text-centered">{{ $user->full_name }}</h5>
+
                         <div class="media">
-                            <figure class="image is-48x48">
-                                <img src="{{ $user->photo }}" alt="Placeholder image">
-                            </figure>
-                            <div class="media-content">
-                                <p class="title is-4">{{ $user->full_name }}</p>
+                            <div class="media-content has-text-left">
+                                {{-- Acadimac Year --}}
+                                <span class="icon-text">
+                                    <span class="icon icon-color">
+                                        <i class="far fa-calendar-alt"></i>
+                                    </span>
+                                    @if ($user->student->year_id == 1)
+                                        <span class="subtitle is-5">First Year</span>
+                                    @elseif ($user->student->year_id == 2)
+                                        <span class="subtitle is-5">Second Year</span>
+                                    @elseif ($user->student->year_id == 3)
+                                        <span class="subtitle is-5">Third Year</span>
+                                    @elseif ($user->student->year_id == 4)
+                                        <span class="subtitle is-5">Fourth Year</span>
+                                    @elseif ($user->student->year_id == 5)
+                                        <span class="subtitle is-5">Fifth Year</span>
+                                    @endif
+                                </span><br><br>
 
-                                <p class="title is-4">{{ $user->phone }}</p>
-                                <p class="title is-4">{{ $user->email }}</p>
-                                <p class="title is-4">{{ $user->password }}</p>
-                                <p class="title is-4">{{ $user->student->year_id }}</p>
-                                {{-- role --}}
+                                {{-- Role --}}
+                                <span class="icon-text">
+                                    <span class="icon icon-color">
+                                        <i class="fas fa-user-graduate"></i>
+                                    </span>
+                                    <span class="subtitle is-5">{{ $role->name }}</span>
+                                </span><br><br>
 
-                                {{ $role->name }}
+
+                                {{-- Email --}}
+                                <span class="icon-text">
+                                    <span class="icon icon-color">
+                                        <i class="far fa-envelope-open"></i>
+                                    </span>
+                                    <span class="subtitle is-5">{{ $user->email }}</span>
+                                </span><br><br>
+
+                                {{-- Phone number --}}
+                                <span class="icon-text">
+                                    <span class="icon icon-color">
+                                        <i class="fas fa-mobile-alt"></i>
+                                    </span>
+                                    <span class="subtitle is-5">{{ $user->phone }}</span>
+                                </span>
 
                             </div>
                         </div>
                     </div>
+
+                    {{-- Edit Button --}}
                     <a href="{{ route('profile.edit', $user->id) }}">
-                        <button class="button is-link is-warning is-hovered is-focused is-active">
-                            Edit
+                        <button class="button profile-button">
+                            Edit your Info
                         </button>
                     </a>
                 </div>
 
             </div>
         </div>
+
     </div>
 @endsection

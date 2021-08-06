@@ -5,30 +5,45 @@
 @section('content')
     {{-- The Table --}}
     <div class="container">
-        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+        <table class="table is-striped is-narrow is-hoverable is-fullwidth">
             {{-- Table Header --}}
             <thead>
                 {{-- Table Row --}}
                 <tr>
-                    {{-- <th>Student Name</th> --}}
-                    <th>Course Name</th>
-                    <th>Quiz Name</th>
-                    <th>Result</th>
-                    <th>Created At</th>
+                    <th>
+                        <p>Course Name</p>
+                    </th>
+                    <th>
+                        <p>Quiz Name</p>
+                    </th>
+                    <th>
+                        <p>Result</p>
+                    </th>
+                    <th>
+                        <p>Created At</p>
+                    </th>
                 </tr>
             </thead>
 
             {{-- Table Body --}}
             <tbody>
-                {{-- @foreach ($results as $result)
-                    @if ($result->user_id === Auth::user()->id) --}}
-                <tr>
-                    <th>{{ $result->quiz->course->name }}</th>
-                    <th>{{ $result->quiz->name }}</th>
-                    <th>{{ $result->quiz_result }}</th>
-                    <th>{{ $result->created_at }}</th>
-                </tr>
-                {{-- @endif --}}
+                @foreach ($results as $result)
+                    @if ($result->user_id === Auth::user()->id)
+                        <tr>
+                            <th>
+                                <p>{{ $result->quiz->course->name }}</p>
+                            </th>
+                            <th>
+                                <p>{{ $result->quiz->name }}</p>
+                            </th>
+                            <th>
+                                <p>{{ $result->quiz_result }}</p>
+                            </th>
+                            <th>
+                                <p>{{ $result->created_at }}</p>
+                            </th>
+                        </tr>
+                    @endif
                 @endforeach
             </tbody>
         </table>

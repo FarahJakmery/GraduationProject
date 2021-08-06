@@ -26,8 +26,6 @@
                 </div>
             </div>
 
-
-
             {{-- Edit Email --}}
             <div class="field">
                 <label class="label inputtitle"> Email</label>

@@ -45,7 +45,6 @@ class ProfessorController extends Controller
 
     public function store(Request $request)
     {
-
         $request->validate([
             'full_name'            => 'required|string|min:4|max:255',
             'photo'                => 'required|file|image',
@@ -56,28 +55,23 @@ class ProfessorController extends Controller
             'role_id'              => 'required|exists:roles,id',
         ]);
 
+        $file = $request->file('photo');
+        $file = $file->store('profile-pictures', 'public');
+
         $user = new User();
         $user->full_name = $request->full_name;
         $user->email     = $request->email;
         $user->password  = Hash::make($request->password);
         $user->phone     = $request->phone;
-
-        $file = $request->file('photo');
-        $url = '/storage/photo' . $request->id . '.' . $file->extension();
-
-        Image::make($file)
-            ->resize(300, 250)
-            ->save(public_path($url));
-        $user->photo = $url;
+        $user->photo     = Storage::url($file);
         $user->save();
-
 
         $role = Role::find($request->role_id);
         $user->assignRole($role);
 
         $professor = Professor::create([
             'description'     => $request->description,
-            'user_id'         =>  $user->id,
+            'user_id'         => $user->id,
         ]);
 
         if ($user and $professor) {

@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Year;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Role;
@@ -102,7 +103,7 @@ class ProfileController extends Controller
             'full_name' => $request->full_name,
             'phone'     => $request->phone,
             'email'     => $request->email,
-            'password'  => $request->password,
+            'password'  => Hash::make($request->password),
             'photo'     => Storage::url($file),
         ]);
 
@@ -119,7 +120,6 @@ class ProfileController extends Controller
 
         return redirect()->route('profile.show', $id);
     }
-
     /**
      * Remove the specified resource from storage.
      *

@@ -1,4 +1,3 @@
-
 @extends('layouts.app1')
 
 @section('title', 'ALL Questions')
@@ -6,9 +5,9 @@
 @section('content')
 
     {{-- Button To Add A New Question --}}
-    <div class="container mb-3">
+    <div class="container ADDButton mb-3">
         <a href="{{ route('questions.create') }}">
-            <button class="button is-link is-primary is-hovered is-focused is-active">
+            <button class="button">
                 Add Question
             </button>
         </a>
@@ -16,52 +15,74 @@
 
     {{-- the table --}}
     <div class="container">
-        <table class="table is-fullwidth is-striped is-hoverable is-bordered ">
+        <table class="table is-striped is-narrow is-hoverable is-fullwidth">
 
             {{-- Table Header --}}
             <thead>
                 <tr>
-                    <th>Id</th>
-                    <th>Question Text</th>
-                    <th>Score</th>
-                    <th>Created At</th>
-                    <th>Updated At</th>
-                    <th>More Option</th>
+                    <th>
+                        <p>ID</p>
+                    </th>
+                    <th>
+                        <p>Question Text</p>
+                    </th>
+                    <th>
+                        <p>Score</p>
+                    </th>
+                    <th>
+                        <p>Created At</p>
+                    </th>
+                    <th>
+                        <p>Updated At</p>
+                    </th>
+                    <th>
+                        <p>More Option</p>
+                    </th>
                 </tr>
             </thead>
-
-            {{-- Table Footer --}}
-            <tfoot>
-                <tr>
-                    <th>Id</th>
-                    <th>Question Text</th>
-                    <th>Score</th>
-                    <th>Created At</th>
-                    <th>Updated At</th>
-                    <th>More Option</th>
-                </tr>
-            </tfoot>
 
             {{-- Table Body --}}
             <tbody>
                 @foreach ($questions as $question)
                     <tr>
-                        <td>{{ $question->id }}</td>
-                        <td>{{ $question->question_text }}</td>
-                        <td>{{ $question->score }}</td>
-                        <td>{{ $question->created_at }}</td>
-                        <td>{{ $question->updated_at }}</td>
-                        <td>
-                            <div class="buttons">
-                                <a href="{{ route('questions.show', $question->id) }}" class="button is-info">view</a>
-                                <a href="{{ route('questions.edit', $question->id) }}" class="button is-warning">Edit</a>
+                        <th>
+                            <p>{{ $question->id }}</p>
+                        </th>
+                        <th>
+                            <p>{{ $question->question_text }}</p>
+                        </th>
+                        <th>
+                            <p>{{ $question->score }}</p>
+                        </th>
+                        <th>
+                            <p>{{ $question->created_at }}</p>
+                        </th>
+                        <th>
+                            <p>{{ $question->updated_at }}</p>
+                        </th>
+                        <th>
+                            <div class="field is-grouped">
+                                <p class="control">
+                                    <a href="{{ route('questions.show', $question->id) }}">
+                                        <span class="iconView"></span>
+                                    </a>
+                                </p>
+                                <p class="control">
+                                    <a href="{{ route('questions.edit', $question->id) }}">
+                                        <span class="iconEdit"></span>
+                                    </a>
+                                </p>
+                                <p class="control">
                                 <form action="{{ route('questions.destroy', $question->id) }}" method="post">
                                     @csrf
                                     <input type="hidden" name="_method" value="DELETE">
-                                    <input class="button is-danger" type="submit" value="Delete">
+                                    <button class="deletebutton" type="submit" value="Delete">
+                                        <span class="iconDelete"></span>
+                                    </button>
                                 </form>
+                                </p>
                             </div>
-                        </td>
+                        </th>
                     </tr>
                 @endforeach
             </tbody>

@@ -1,28 +1,3 @@
-{{-- @extends('layouts.app1')
-
-@section('title', 'This course Include This Lectures')
-@section('content')
-    <div class="container">
-        <div class="columns is-multiline">
-            @foreach ($lectures as $lecture)
-                <div class="column is-4">
-                    <a href="{{ route('studentlectures.show', $lecture->id) }}">
-                        <div class="card">
-                            <div class="card-content">
-                                <div class="media">
-                                    <div class="media-content">
-                                        <p class="title is-4">{{ $lecture->name }}</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </a>
-                </div>
-            @endforeach
-        </div>
-    </div>
-@endsection --}}
 @extends('layouts.app1')
 
 @section('title', 'This course Include This Lectures')
@@ -31,12 +6,33 @@
         <div class="columns is-multiline">
             @foreach ($lectures as $lecture)
                 <div class="column is-6">
-                    <button class="accordion">{{ $lecture->name }}</button>
+                    <button class="accordion"><b>{{ $lecture->name }}</b></button>
                     <div class="panel">
-                        <p>{{ $lecture->description }}</p>
-                        <button class="buttonstyle"><a class="stylelink"
-                                href="{{ route('studentlectures.show', $lecture->id) }}">Show
-                                Lecture</a></button>
+                        <h3 class="descriptionstyle">{{ $lecture->description }}</h3>
+                        <p class="content postedstyle">
+                            <b>Posted at:</b> {{ $lecture->created_at }}
+                        </p>
+                        <a href="{{ route('studentlectures.show', $lecture->id) }}">
+                            <button class="buttonstyle1">
+                                <span class="icon-text">
+                                    <span class="icon">
+                                        <i class="fas fa-video"></i>
+                                    </span>
+                                    <span><b>Show Video</b></span>
+                                </span>
+                            </button>
+                        </a>
+
+                        <a href="">
+                            <button class="buttonstyle2">
+                                <span class="icon-text">
+                                    <span class="icon">
+                                        <i class="fas fa-file-download"></i>
+                                    </span>
+                                    <span><b>Download PDF</b></span>
+                                </span>
+                            </button>
+                        </a>
                     </div>
                 </div>
             @endforeach

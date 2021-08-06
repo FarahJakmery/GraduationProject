@@ -13,9 +13,13 @@
     <link rel="stylesheet" href="{{ asset('css/StudentStyle/yearstyle.css') }}">
     <link rel="stylesheet" href="{{ asset('css/StudentStyle/semesterstyle.css') }}">
     <link rel="stylesheet" href="{{ asset('css/StudentStyle/coursestyle.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/createandeditstyle.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/showstyle.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/Admin&Prof/createandeditstyle.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/Admin&Prof/showstyle.css') }}">
     <link rel="stylesheet" href="{{ asset('css/StudentStyle/showcoursestyle.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/StudentStyle/lecturestyle.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/StudentStyle/quizstyle.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/profilestyle.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/Admin&Prof/indexstyle.css') }}">
     @yield('style')
 </head>
 

@@ -4,9 +4,9 @@
 @section('content')
 
     {{-- Button To Add A New Course --}}
-    <div class="container mb-3">
+    <div class="container ADDButton mb-3">
         <a href="{{ route('courses.create') }}">
-            <button class="button is-link is-primary is-hovered is-focused is-active">
+            <button class="button">
                 Add Course
             </button>
         </a>
@@ -15,68 +15,82 @@
 
     {{-- The Table --}}
     <div class="container">
-        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+        <table class="table is-striped is-narrow is-hoverable is-fullwidth">
             {{-- Table Header --}}
             <thead>
                 {{-- Table Row --}}
                 <tr>
-                    <th>Id</th>
-                    <th>Semester</th>
-                    <th>Professor</th>
-                    <th>Course Name</th>
-                    <th>Description</th>
-                    <th>Created At</th>
-                    <th>Updated At</th>
-                    <th></th>
+                    <th>
+                        <p>ID</p>
+                    </th>
+                    <th>
+                        <p>Semester</p>
+                    </th>
+                    <th>
+                        <p>Professor</p>
+                    </th>
+                    <th>
+                        <p>Course Name</p>
+                    </th>
+                    <th>
+                        <p>Description</p>
+                    </th>
+                    <th>
+                        <p>Created At</p>
+                    </th>
+                    <th>
+                        <p>Updated At</p>
+                    </th>
+                    <th>
+                        <p>Options</p>
+                    </th>
                 </tr>
             </thead>
-
-            {{-- Table Footer --}}
-            <tfoot>
-                <tr>
-                    <th>Id</th>
-                    <th>Semester</th>
-                    <th>Professor</th>
-                    <th>Course Name</th>
-                    <th>Description</th>
-                    <th>Created At</th>
-                    <th>Updated At</th>
-                    <th></th>
-                </tr>
-            </tfoot>
 
             {{-- Table Body --}}
             <tbody>
                 @foreach ($courses as $course)
                     <tr>
-                        <th>{{ $course->id }}</th>
-                        <th>{{ $course->semester->name }}</th>
-                        {{-- <th>{{ $course->professor->user->full_name }}</th> --}}
-                        <th>{{ $course->name }}</th>
-                        <th>{{ $course->description }}</th>
-                        <th>{{ $course->created_at }}</th>
-                        <th>{{ $course->updated_at }}</th>
+                        <th>
+                            <p>{{ $course->id }}</p>
+                        </th>
+                        <th>
+                            <p>{{ $course->semester->name }}</p>
+                        </th>
+                        <th>
+                            <p>{{ $course->professor->user->full_name }}</p>
+                        </th>
+                        <th>
+                            <p>{{ $course->name }}</p>
+                        </th>
+                        <th>
+                            <p>{{ $course->description }}</p>
+                        </th>
+                        <th>
+                            <p>{{ $course->created_at }}</p>
+                        </th>
+                        <th>
+                            <p>{{ $course->updated_at }}</p>
+                        </th>
                         <th>
                             <div class="field is-grouped">
                                 <p class="control">
                                     <a href="{{ route('courses.show', $course->id) }}">
-                                        <button class="button is-link is-info is-hovered is-focused is-active">
-                                            View
-                                        </button>
+                                        <span class="iconView"></span>
+                                    </a>
                                 </p>
                                 <p class="control">
                                     <a href="{{ route('courses.edit', $course->id) }}">
-                                        <button class="button is-link is-warning is-hovered is-focused is-active">
-                                            Edit
-                                        </button>
+                                        <span class="iconEdit"></span>
                                     </a>
                                 </p>
                                 <p class="control">
                                 <form action="{{ route('courses.destroy', $course->id) }}" method="post">
                                     @csrf
                                     <input type="hidden" name="_method" value="DELETE">
-                                    <input class="button is-danger is-hovered is-focused is-active" type="submit"
-                                        value="Delete">
+                                    <button class="deletebutton" type="submit" value="Delete">
+                                        <span class="iconDelete"></span>
+                                    </button>
                                 </form>
                                 </p>
                             </div>
@@ -84,6 +98,8 @@
                     </tr>
                 @endforeach
             </tbody>
+
         </table>
     </div>
+
 @endsection

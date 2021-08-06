@@ -4,10 +4,9 @@
 @section('content')
 
     {{-- Button To Add A New Option --}}
-    <div class="container mb-3">
+    <div class="container ADDButton mb-3">
         <a href="{{ route('lectures.create') }}">
-            <label class="label is-uppercase has-text-weight-bold has-text-primary">Add Lecture</label>
-            <button class="button is-link is-primary is-hovered is-focused is-active">
+            <button class="button">
                 Add Lecture
             </button>
         </a>
@@ -16,65 +15,76 @@
 
     {{-- The Table --}}
     <div class="container">
-        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+        <table class="table is-striped is-narrow is-hoverable is-fullwidth">
             {{-- Table Header --}}
             <thead>
                 {{-- Table Row --}}
                 <tr>
-                    <th>Id</th>
-                    <th>Course</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Created At</th>
-                    <th>Updated At</th>
-                    <th></th>
+                    <th>
+                        <p>Id</p>
+                    </th>
+                    <th>
+                        <p>Course</p>
+                    </th>
+                    <th>
+                        <p>Name</p>
+                    </th>
+                    <th>
+                        <p>Description</p>
+                    </th>
+                    <th>
+                        <p>Created At</p>
+                    </th>
+                    <th>
+                        <p>Updated At</p>
+                    </th>
+                    <th>
+                        <p>Options</p>
+                    </th>
                 </tr>
             </thead>
-
-            {{-- Table Footer --}}
-            <tfoot>
-                <tr>
-                    <th>Id</th>
-                    <th>Course</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Created At</th>
-                    <th>Updated At</th>
-                    <th></th>
-                </tr>
-            </tfoot>
 
             {{-- Table Body --}}
             <tbody>
                 @foreach ($lectures as $lecture)
                     <tr>
-                        <th>{{ $lecture->id }}</th>
-                        <th>{{ $lecture->course->name }}</th>
-                        <th>{{ $lecture->name }}</th>
-                        <th>{{ $lecture->description }}</th>
-                        <th>{{ $lecture->created_at }}</th>
-                        <th>{{ $lecture->updated_at }}</th>
+                        <th>
+                            <p>{{ $lecture->id }}</p>
+                        </th>
+                        <th>
+                            <p>{{ $lecture->course->name }}</p>
+                        </th>
+                        <th>
+                            <p>{{ $lecture->name }}</p>
+                        </th>
+                        <th>
+                            <p>{{ $lecture->description }}</p>
+                        </th>
+                        <th>
+                            <p>{{ $lecture->created_at }}</p>
+                        </th>
+                        <th>
+                            <p>{{ $lecture->updated_at }}</p>
+                        </th>
                         <th>
                             <div class="field is-grouped">
                                 <p class="control">
                                     <a href="{{ route('lectures.show', $lecture->id) }}">
-                                        <button class="button is-link is-info is-hovered is-focused is-active">
-                                            View
-                                        </button>
+                                        <span class="iconView"></span>
+                                    </a>
                                 </p>
                                 <p class="control">
                                     <a href="{{ route('lectures.edit', $lecture->id) }}">
-                                        <button class="button is-link is-warning is-hovered is-focused is-active">
-                                            Edit
-                                        </button>
+                                        <span class="iconEdit"></span>
                                     </a>
                                 </p>
                                 <p class="control">
                                 <form action="{{ route('lectures.destroy', $lecture->id) }}" method="post">
                                     @csrf
                                     <input type="hidden" name="_method" value="DELETE">
-                                    <input class="button is-danger is-hovered is-focused is-active" type="submit"
-                                        value="Delete">
+                                    <button class="deletebutton" type="submit" value="Delete">
+                                        <span class="iconDelete"></span>
+                                    </button>
                                 </form>
                                 </p>
                             </div>

@@ -4,71 +4,81 @@
 
 @section('content')
 
-    <div class="container">
-        <div class="field">
-            <div class="control">
+    {{-- Button To Add A New Course --}}
+    <div class="container ADDButton mb-3">
+        <a href="{{ route('quizzes.create') }}">
+            <button class="button">
+                Add Quiz
+            </button>
+        </a>
+    </div>
 
-                <a class="navbar-item " href="{{ route('quizzes.create') }}"
-                    style="background-color: royalblue ;color:rgb(220, 213, 223);border:solid 2px;width:100px">Add Quiz</a>
-            </div>
-        </div>
-        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+    {{-- The Table --}}
+    <div class="container">
+        <table class="table is-striped is-narrow is-hoverable is-fullwidth">
 
             {{-- Table Header --}}
             <thead>
                 {{-- Table Row --}}
                 <tr>
-                    <th>Id</th>
-                    <th>Course</th>
-                    <th>Title</th>
-                    <th>Created At</th>
-                    <th>Updated At</th>
-                    <th>More Option</th>
+                    <th>
+                        <p>ID</p>
+                    </th>
+                    <th>
+                        <p>Course</p>
+                    </th>
+                    <th>
+                        <p>Title</p>
+                    </th>
+                    <th>
+                        <p>Created At</p>
+                    </th>
+                    <th>
+                        <p>Updated At</p>
+                    </th>
+                    <th>
+                        <p>More Option</p>
+                    </th>
                 </tr>
             </thead>
-
-            {{-- Table Footer --}}
-            <tfoot>
-                <tr>
-                    <th>Id</th>
-                    <th>Course</th>
-                    <th>Title</th>
-                    <th>Created At</th>
-                    <th>Updated At</th>
-                    <th>More Option</th>
-                </tr>
-            </tfoot>
 
             {{-- Table Body --}}
             <tbody>
                 @foreach ($quiz as $quiz)
                     <tr>
-                        <th>{{ $quiz->id }}</th>
-                        <th>{{ $quiz->course->name }}</th>
-                        <th>{{ $quiz->name }}</th>
-                        <th>{{ $quiz->created_at }}</th>
-                        <th>{{ $quiz->updated_at }}</th>
+                        <th>
+                            <p>{{ $quiz->id }}</p>
+                        </th>
+                        <th>
+                            <p>{{ $quiz->course->name }}</p>
+                        </th>
+                        <th>
+                            <p>{{ $quiz->name }}</p>
+                        </th>
+                        <th>
+                            <p>{{ $quiz->created_at }}</p>
+                        </th>
+                        <th>
+                            <p>{{ $quiz->updated_at }}</p>
+                        </th>
                         <th>
                             <div class="field is-grouped">
                                 <p class="control">
                                     <a href="{{ route('quizzes.show', $quiz->id) }}">
-                                        <button class="button is-link is-info is-hovered is-focused is-active">
-                                            View
-                                        </button>
+                                        <span class="iconView"></span>
                                 </p>
                                 <p class="control">
                                     <a href="{{ route('quizzes.edit', $quiz->id) }}">
-                                        <button class="button is-link is-warning is-hovered is-focused is-active">
-                                            Edit
-                                        </button>
+                                        <span class="iconEdit"></span>
                                     </a>
                                 </p>
                                 <p class="control">
                                 <form action="{{ route('quizzes.destroy', $quiz->id) }}" method="post">
                                     @csrf
                                     <input type="hidden" name="_method" value="DELETE">
-                                    <input class="button is-danger is-hovered is-focused is-active" type="submit"
-                                        value="Delete">
+                                    <button class="deletebutton" type="submit" value="Delete">
+                                        <span class="iconDelete"></span>
+                                    </button>
                                 </form>
                                 </p>
                             </div>

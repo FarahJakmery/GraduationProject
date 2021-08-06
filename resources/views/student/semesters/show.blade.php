@@ -14,17 +14,31 @@
                                 </figure>
                             </div>
                             <div class="card-content">
-                                <h1 class="title coursename is-6">Course Name:<span class="subtitle is-6">
-                                        {{ $course->name }}</span>
-                                </h1>
-                                <h1 class="title professorname is-6">professor Name:<span class="subtitle is-6">
-                                        {{ $course->professor->user->full_name }}</span>
-                                </h1>
-                                <h1 class="title description is-6">Description:<span class="subtitle is-6">
-                                        {{ $course->description }}</span>
-                                </h1>
-                                {{-- <b>Created At:</b> {{ $course->created_at }} --}}
+                                {{-- course name --}}
+                                <span class="icon-text">
+                                    <span class="icon iconColor1 is-medium">
+                                        <i class="fas fa-book"></i>
+                                    </span>
+                                    <span class="subtitle coursename">{{ $course->name }}</span>
+                                </span><br>
 
+                                {{-- professor name --}}
+                                <span class="icon-text">
+                                    <span class="icon iconColor1 is-medium">
+                                        <i class="fas fa-user-tie"></i>
+                                    </span>
+                                    <span class="subtitle professorname">{{ $course->professor->user->full_name }}</span>
+                                </span><br>
+
+                                {{-- course name --}}
+                                <span class="icon-text">
+                                    <span class="icon iconColor1 is-medium">
+                                        <i class="fas fa-list-ul"></i>
+                                    </span>
+                                    <span class="subtitle description">
+                                        {{ $course->description }}
+                                    </span>
+                                </span><br>
 
                             </div>
                         </div>

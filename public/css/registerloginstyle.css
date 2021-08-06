@@ -1,5 +1,12 @@
 body {
-    background-color: #e7e69e;
+    background: rgb(36, 33, 54);
+    background: linear-gradient(
+        90deg,
+        rgba(36, 33, 54, 0.9556197478991597) 0%,
+        rgba(36, 33, 54, 0.27) 30%,
+        rgba(8, 3, 11, 0.26934523809523814) 70%,
+        rgba(36, 33, 54, 0.96) 100%
+    );
 }
 form .authinput {
     border-radius: 20px;
@@ -15,6 +22,7 @@ form .authinput {
     border-radius: 20px;
     border-color: #d5b361;
     background-color: #221f33;
+    box-shadow: 0 10px 20px #808080;
 }
 .subcontainer {
     width: 600px;
@@ -80,20 +88,23 @@ form .authinput {
 }
 .signup {
     color: #d5b361;
-    text-align: center;
+    /* text-align: center; */
+    margin: 0 auto;
     font-size: 40px;
-    margin-top: -10px;
+    margin-top: -7px;
+    padding-left: 240px;
 }
 .signin {
     color: #d5b361;
     text-align: center;
-    font-size: 29px;
+    font-size: 35px;
     margin-top: -25px;
     left: -12px;
     padding-right: 105px;
 }
 .logcontainer .subcontainer form .loginput {
-    width: 374px;
+    width: 450px;
+    border-radius: 20px;
 }
 
 .logcontainer .subcontainer form .logdiv1 .loglabel {
@@ -148,4 +159,7 @@ form .authinput {
     width: 500px;
     height: 300px;
     background-color: #221f33;
+    border-radius: 20px;
+    border-color: #d5b361;
+    box-shadow: 0 10px 20px #808080;
 }

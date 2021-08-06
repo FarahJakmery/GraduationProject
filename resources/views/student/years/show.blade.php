@@ -4,8 +4,8 @@
 @section('subtitle', 'Choose .........')
 
 @section('content')
-    <div class="container ">
-        <div class="columns is-centered ">
+    <div class="container">
+        <div class="columns is-centered">
             @foreach ($semesters as $semester)
                 <div class="column is-6">
                     <a href="{{ route('semesters.show', $semester->id) }}">

@@ -8,8 +8,8 @@
     border: none;
     outline: none;
     transition: 0.4s;
-    font-size: medium;
-    box-shadow: 0 8px 10px #0a1516c9;
+    font-size: large;
+    box-shadow: 0 10px 20px #808080;
 }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
@@ -26,23 +26,64 @@
     display: none;
     overflow: hidden;
     color: #242136;
-    margin-top: 8px;
+    margin-top: 10px;
     margin-bottom: 8px;
+    font-size: 18px;
+    border-bottom: 2px solid #242136;
+    border-left: 2px solid #242136;
+    border-right: 2px solid #242136;
 }
-/* Style the Show Lecture link */
-.stylelink {
-    color: #242136;
-}
-.stylelink:hover {
+
+.buttonstyle1:hover {
     color: #d5b361;
 }
-/* Style the button for Show Lecture */
-.buttonstyle {
+
+.buttonstyle2 :hover {
+    color: #d5b361;
+}
+
+/* Posted date style */
+.postedstyle {
+    color: #242136;
+    font-size: 18px;
+    margin-top: 12px;
+}
+
+/* description style */
+.descriptionstyle {
+    color: #242136;
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+/* Style the button1 for Show Lecture */
+.buttonstyle1 {
     border: 2px solid #242136;
     border-radius: 15px;
     margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 20px #808080;
+    width: 150px;
+    height: 40px;
+    color: #242136;
+    font-size: medium;
 }
+
+/* Style the button2 for Show Lecture */
+.buttonstyle2 {
+    border: 2px solid #242136;
+    border-radius: 15px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 20px #808080;
+    float: right;
+    width: 160px;
+    height: 40px;
+    color: #242136;
+    font-size: medium;
+}
+
 /* add icon */
 .accordion:after {
     content: "\02795"; /* Unicode character for "plus" sign (+) */
@@ -51,6 +92,7 @@
     float: right;
     margin-left: 5px;
 }
+
 .active:after {
     content: "\2796"; /* Unicode character for "minus" sign (-) */
 }

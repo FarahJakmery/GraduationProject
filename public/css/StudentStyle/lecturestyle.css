@@ -1,0 +1,18 @@
+/* Video Style */
+.videostyle {
+    border: 2px solid #242136;
+    border-radius: 20px;
+    margin-top: 15px;
+    box-shadow: 0 10px 20px #808080;
+}
+/* .containerstyle {
+    text-align: center;
+} */
+.styless {
+    color: #242136;
+    margin-top: -80px;
+}
+.iconColor {
+    color: #d5b361;
+    font-size: 25px;
+}

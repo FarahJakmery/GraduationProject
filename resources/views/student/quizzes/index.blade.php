@@ -5,50 +5,57 @@
 
     {{-- The Table --}}
     <div class="container">
-        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+        <table class="table is-striped is-narrow is-hoverable is-fullwidth">
             {{-- Table Header --}}
             <thead>
                 {{-- Table Row --}}
                 <tr>
-                    <th>Id</th>
-                    <th>Course</th>
-                    <th>Quiz Name</th>
-                    <th>Created At</th>
-                    <th>Updated At</th>
-                    <th></th>
+                    <th>
+                        <p>ID</p>
+                    </th>
+                    <th>
+                        <p>Course</p>
+                    </th>
+                    <th>
+                        <p>Quiz Name</p>
+                    </th>
+                    <th>
+                        <p>Created At</p>
+                    </th>
+                    <th>
+                        <p>Updated At</p>
+                    </th>
+                    <th>
+                        <p>Options</p>
+                    </th>
                 </tr>
             </thead>
-
-            {{-- Table Footer --}}
-            <tfoot>
-                <tr>
-                    <th>Id</th>
-                    <th>Course</th>
-                    <th>Quiz Name</th>
-                    <th>Created At</th>
-                    <th>Updated At</th>
-                    <th></th>
-                </tr>
-            </tfoot>
 
             {{-- Table Body --}}
             <tbody>
                 @foreach ($quizzes as $quiz)
                     <tr>
-                        <th>{{ $quiz->id }}</th>
-                        <th>{{ $quiz->course->name }}</th>
-                        <th>{{ $quiz->name }}</th>
-                        <th>{{ $quiz->created_at }}</th>
-                        <th>{{ $quiz->updated_at }}</th>
                         <th>
-                            <div class="field is-grouped">
-                                <p class="control">
-                                    <a href="{{ route('studentquizzes.show', $quiz->id) }}">
-                                        <button class="button is-link is-info is-hovered is-focused is-active">
-                                            Start Quiz
-                                        </button>
-                                </p>
-                            </div>
+                            <p>{{ $quiz->id }}</p>
+                        </th>
+                        <th>
+                            <p>{{ $quiz->course->name }}</p>
+                        </th>
+                        <th>
+                            <p>{{ $quiz->name }}</p>
+                        </th>
+                        <th>
+                            <p>{{ $quiz->created_at }}</p>
+                        </th>
+                        <th>
+                            <p>{{ $quiz->updated_at }}</p>
+                        </th>
+                        <th>
+                            <a href="{{ route('studentquizzes.show', $quiz->id) }}">
+                                <button class="button StartQuizButton">
+                                    Start Quiz
+                                </button>
+                            </a>
                         </th>
                     </tr>
                 @endforeach

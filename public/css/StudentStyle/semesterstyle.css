@@ -2,7 +2,8 @@
     width: 559px;
     height: 307px;
     position: relative;
-    box-shadow: 0 10px 20px #0a1516c9;
+    box-shadow: 0 10px 20px #808080;
+    margin: 0 50px;
 }
 
 .semesterimg {

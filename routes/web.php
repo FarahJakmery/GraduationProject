@@ -87,7 +87,6 @@ Route::group(['prefix' => '/professor', 'middleware' => 'role:Professor'], funct
 
     // Result Route
     Route::get('/results', [ProfessorResultController::class, 'index'])->name('professorresults.index');
-
     //Post Route
 });
 

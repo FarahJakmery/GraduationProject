@@ -1,7 +1,7 @@
 .coursercard {
-    width: 280px;
-    height: 385px;
-    box-shadow: 0 10px 20px #0a1516c9;
+    width: 300px;
+    height: auto;
+    box-shadow: 0 10px 20px #808080;
     border-radius: 30px;
     margin: 0 auto;
 }
@@ -11,21 +11,26 @@
     height: 198px;
 }
 .card-content .coursename {
-    margin-top: -20px;
-    margin-left: -17px;
-    font-size: large;
+    font-size: larger;
     color: #221f33;
 }
 
 .card-content .professorname {
-    margin-top: -20px;
-    margin-left: -17px;
-    font-size: large;
+    font-size: larger;
     color: #221f33;
 }
+
 .card-content .description {
-    margin-top: -20px;
-    margin-left: -17px;
-    font-size: large;
+    font-size: larger;
+    color: #221f33;
+    /* display: block; */
+    /* width: 100px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+ */
+}
+
+.iconColor1 {
     color: #221f33;
 }
