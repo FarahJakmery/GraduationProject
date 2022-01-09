@@ -1,6 +1,5 @@
 @extends('layouts.app1')
 
-@section('title', 'Create Option')
 @section('content')
     <div class="container">
         <form action="{{ route('options.store') }}" method="post">

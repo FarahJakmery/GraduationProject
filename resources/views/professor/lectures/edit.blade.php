@@ -1,5 +1,4 @@
 @extends('layouts.app1')
-@section('title', 'Edit Lecture')
 
 @section('content')
     <div class="container">
@@ -61,8 +60,8 @@
 
 
             {{-- The Video of the Lecture --}}
-            <div class="position">
-                <div id="video-upload" class="file has-name is-fullwidth mr-6">
+            <div class="position mt-5">
+                <div id="video-upload" class="file has-name ">
                     <label class="file-label">
                         <input class="file-input" type="file" name="video">
                         <span class="file-cta">
@@ -82,7 +81,7 @@
                     @enderror
                 </div>
                 {{-- upload pdf --}}
-                <div id="pdf-upload" class="file has-name is-fullwidth">
+                <div id="pdf-upload" class="file has-name pdffile">
                     <label class="file-label">
                         <input class="file-input" type="file" name="pdf">
                         <span class="file-cta">

@@ -1,30 +1,21 @@
 @extends('layouts.app1')
-
-@section('title', $lecture->name)
-
 @section('content')
     <div class="container">
-        <div class="columns">
-            {{-- This is Video --}}
-            <div class="column is-6">
-                <video controls width="600" height="400" autoplay loop>
-                    <source src="{{ $lecture->video }} " type="video/mp4">
-                    Your Browser Dosent Support Video Tag
-                </video>
-            </div>
-            {{-- This is Lecture Info --}}
-            <div class="column is-6">
-                <div class="content">
-                    {{ $lecture->description }}
+        <div class="card profcard">
+            <div class="columns">
+                {{-- This is Video --}}
+                <div class="column is-6">
+                    <video controls width="600" autoplay loop class="ved">
+                        <source src="{{ $lecture->video }} " type="video/mp4">
+                        Your Browser Dosent Support Video Tag
+                    </video>
                 </div>
-                <h3 class="subtitle is-5">{{ $lecture->course->name }}</h3>
-                <p class="content">
-                    Posted at: {{ $lecture->created_at }}
-                </p>
-
+                <div class="column is-6">
+                    <h1 class="title titleprof is-2 ">{{ $lecture->course->name }}</h1>
+                    <h2 class="title titleprof is-4"> {{ $lecture->description }}</h2>
+                    <b><time class="titleprof is-4" datetime="2016-1-1">{{ $lecture->created_at }}</time></b>
+                </div>
             </div>
         </div>
-
     </div>
-
 @endsection

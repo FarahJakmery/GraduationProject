@@ -1,7 +1,5 @@
 @extends('layouts.app1')
 
-@section('title', 'Edit your profile')
-
 @section('content')
     <div class="container">
         <form action="{{ route('profile.update', $user->id) }}" method="post" enctype="multipart/form-data">
@@ -83,7 +81,7 @@
                     </div>
                 </div>
                 {{-- The Student's photo --}}
-                <div id="photo_upload" class="file has-name is-fullwidth pos">
+                <div id="photo_upload" class="file has-name profilephoto">
                     <label class="file-label">
                         <input class="file-input" type="file" name="photo">
                         <span class="file-cta">

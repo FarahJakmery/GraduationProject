@@ -1,0 +1,28 @@
+.optionprof {
+    color: #242136;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    font-size: 20px;
+}
+.correcticon {
+    background: url("../../icons/Correct.png");
+    height: 15px;
+    width: 50px;
+    display: block;
+}
+.backstyle {
+    background-color: #d5b361;
+    color: #242136;
+    width: 160px;
+    height: 50px;
+    border-radius: 20px;
+    margin-top: 10px;
+}
+.backsize {
+    font-size: large;
+}
+.buttomss {
+    margin-bottom: 15px;
+    margin-left: 25px;
+}

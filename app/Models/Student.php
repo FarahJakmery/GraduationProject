@@ -11,7 +11,12 @@ class Student extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'year_id'];
+    protected $fillable = ['user_id', 'year_id', 'number_id'];
+
+    public function student()
+    {
+        return $this->belongsTo(Student::class);
+    }
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -24,5 +29,9 @@ class Student extends Model
     public function year()
     {
         return $this->belongsTo(Year::class);
+    }
+    public function student_number()
+    {
+        return $this->hasOne(StudentNumber::class);
     }
 }

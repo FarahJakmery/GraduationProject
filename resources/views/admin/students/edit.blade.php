@@ -1,10 +1,8 @@
 @extends('layouts.app1')
 
-@section('title', 'Edit The Info About Student:')
-
 @section('content')
     <div class="container">
-        <form action="{{ route('students.update', $student->id) }}" method="post">
+        <form action="{{ route('students.update', $student->id) }}" method="post" enctype="multipart/form-data">
             <input name="_method" type="hidden" value="PUT">
             @csrf
             {{-- origin image --}}
@@ -18,7 +16,7 @@
 
             {{-- Edit Name --}}
             <div class="field">
-                <label class="label"> Full_Name:</label>
+                <label class="label inputtitle"> Full_Name:</label>
                 <div class="control">
                     <input class="input {{ $errors->has('full_name') ? 'is-danger' : '' }}" type="text" name="full_name"
                         placeholder=" full_name ..." value="{{ old('full_name') ?? $student->user->full_name }}">
@@ -32,7 +30,7 @@
 
             {{-- Edit Email --}}
             <div class="field">
-                <label class="label"> Email:</label>
+                <label class="label inputtitle">Email:</label>
                 <div class="control">
                     <input class="input {{ $errors->has('email') ? 'is-danger' : '' }}" type="text" name="email"
                         value="{{ old('email') ?? $student->user->email }}">
@@ -46,7 +44,8 @@
             <div class="field">
                 <label class="label">Password</label>
                 <div class="control">
-                    <input class="input {{ $errors->has('password') ? 'is-danger' : '' }}" type="text" name="password">
+                    <input class="input {{ $errors->has('password') ? 'is-danger' : '' }}" type="password"
+                        name="password">
                     @error('password')
                         <p class="help is-danger">{{ $message }}</p>
                     @enderror
@@ -55,7 +54,7 @@
 
             {{-- Edit Phone --}}
             <div class="field">
-                <label class="label"> Phone:</label>
+                <label class="label inputtitle"> Phone:</label>
                 <div class="control">
                     <input class="input {{ $errors->has('phone') ? 'is-danger' : '' }}" type="text" name="phone"
                         value="{{ old('phone') ?? $student->user->phone }}">
@@ -65,10 +64,22 @@
                 </div>
             </div>
 
+            {{-- student Number --}}
+            <div class="field">
+                <label class="label inputtitle">Student Number</label>
+                <div class="control">
+                    <input class="input {{ $errors->has('number_id') ? 'is-danger' : '' }}" name="number_id"
+                        value="{{ old('number_id') ?? $student->number_id }}">
+                    @error('number_id')
+                        <p class="help is-danger">{{ $message }}</p>
+                    @enderror
+                </div>
+            </div>
+
             <div class="position">
                 {{-- Edit year --}}
                 <div class="field">
-                    <label class="label">Acadimac Year</label>
+                    <label class="label inputtitle">Acadimac Year</label>
                     <div class="control">
                         <div class="select">
                             <select name="year_id">
@@ -85,27 +96,46 @@
                         @enderror
                     </div>
                 </div>
-
-                {{-- The Student's photo --}}
-                <div id="photo_upload" class="file has-name is-fullwidth pos">
-                    <label class="file-label">
-                        <input class="file-input" type="file" name="photo">
-                        <span class="file-cta">
-                            <span class="file-icon">
-                                <i class="fas fa-upload"></i>
-                            </span>
-                            <span class="file-label">
-                                Choose a photo
-                            </span>
-                        </span>
-                        <span class="file-name">
-                            File-Name
-                        </span>
-                    </label>
-                    @error('photo')
-                        <p class="help is-danger">{{ $message }}</p>
-                    @enderror
+                {{-- Edit role --}}
+                <div class="field studentrole">
+                    <label class="label inputtitle">Select Role</label>
+                    <div class="control">
+                        <div class="select">
+                            <select name="role_id">
+                                @foreach ($roles as $role)
+                                    <option value="{{ $role->id }}"
+                                        {{ $role->id == $student->role_id ? 'selected' : '' }}>
+                                        {{ $role->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        @error('role_id')
+                            <p class="help is-danger">{{ $message }}</p>
+                        @enderror
+                    </div>
                 </div>
+
+            </div>
+
+            <div id="photo_upload" class="file has-name  my-5">
+                <label class="file-label">
+                    <input class="file-input" type="file" name="photo">
+                    <span class="file-cta">
+                        <span class="file-icon">
+                            <i class="fas fa-upload"></i>
+                        </span>
+                        <span class="file-label">
+                            Student photo,Choose an Image
+                        </span>
+                    </span>
+                    <span class="file-name">
+                        No file uploaded
+                    </span>
+                </label>
+                @error('photo')
+                    <p class="help is-danger">{{ $message }}</p>
+                @enderror
             </div>
             {{-- button edit --}}
             <div class="field">

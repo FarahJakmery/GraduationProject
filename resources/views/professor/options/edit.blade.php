@@ -1,6 +1,5 @@
 @extends('layouts.app1')
 
-@section('title', 'Edit Option')
 @section('content')
     <div class="container">
         <form action="{{ route('options.update', $option->id) }}" method="post">

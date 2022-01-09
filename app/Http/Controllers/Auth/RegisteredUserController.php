@@ -3,19 +3,20 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Student;
+use App\Models\StudentNumber;
 use App\Models\User;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Auth\Events\Registered;
+use Spatie\Permission\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Validation\Rule;
-use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Traits\HasRoles;
-use App\Models\Student;
 use App\Models\Year;
-use Illuminate\Support\Facades\Storage;
 // use Intervention\Image\Facades\Image;
 
 class RegisteredUserController extends Controller
@@ -51,35 +52,40 @@ class RegisteredUserController extends Controller
             'photo'               => 'required|file|image',
             'role_id'             => 'required|exists:roles,id',
             'year_id'             => 'required|exists:years,id',
+            'number_id'           => 'required|exists:student_numbers,student_number',
         ]);
 
-        $file = $request->file('photo');
-        $file = $file->store('profile-pictures', 'public');
-        Auth::login(
-            $user = User::create([
-                'full_name' => $request->full_name,
-                'phone'     => $request->phone,
-                'email'     => $request->email,
-                'password'  => Hash::make($request->password),
-                'photo'     => Storage::url($file),
-            ])
-        );
-        $student = Student::create([
-            'year_id'     => $request->year_id,
-            'user_id'     => Auth::id(),
-        ]);
+        if (StudentNumber::where('student_number', $request->number_id)->exists()) {
+            $file = $request->file('photo');
+            $file = $file->store('profile-pictures', 'public');
 
-        $role = Role::find($request->role_id);
+            Auth::login(
+                $user = User::create([
+                    'full_name' => $request->full_name,
+                    'phone'     => $request->phone,
+                    'email'     => $request->email,
+                    'password'  => Hash::make($request->password),
+                    'photo'     => Storage::url($file),
+                ])
+            );
+            $student = Student::create([
+                'year_id'     => $request->year_id,
+                'user_id'     => Auth::id(),
+                'number_id'   => $request->number_id,
+            ]);
 
-        $user->assignRole($role);
+            $role = Role::find($request->role_id);
 
-        $user_id = Auth::id();
+            $user->assignRole($role);
 
-        if ($role == (Role::findByName('Student'))) {
-            return redirect()->route('years.index');
+            $user_id = Auth::id();
+
+            if ($role == (Role::findByName('Student'))) {
+                return redirect()->route('years.index');
+            }
+            event(new Registered($user));
+
+            return redirect(RouteServiceProvider::HOME);
         }
-        event(new Registered($user));
-
-        return redirect(RouteServiceProvider::HOME);
     }
 }

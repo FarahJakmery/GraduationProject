@@ -87,14 +87,13 @@ class ProfileController extends Controller
             'password'            => 'required|string|min:8',
             'photo'               => 'required|file|image',
             'role_id'             => 'required|exists:roles,id',
-            'description'         => 'required|string|min:30',
+            'scientific_grade'     => 'required|string|min:4',
+            'scientific_certificate' => 'required|string|min:4',
         ]);
-
+        $user = User::find($id);
 
         $file = $request->file('photo');
         $file = $file->store('profile-pictures', 'public');
-
-        $user = User::find($id);
         $user->update([
             'full_name' => $request->full_name,
             'phone'     => $request->phone,
@@ -103,11 +102,11 @@ class ProfileController extends Controller
             'photo'     => Storage::url($file),
         ]);
 
-
-        $professor = new Professor();
+        $professor = Professor::find($user->professor->user_id);
         $professor->update([
-            'description'     => $request->description,
-            'user_id'         => Auth::id(),
+            'scientific_grade'           => $request->scientific_grade,
+            'scientific_certificate'     => $request->scientific_certificate,
+            'user_id'                    => Auth::id(),
         ]);
 
         if ($user and $professor)

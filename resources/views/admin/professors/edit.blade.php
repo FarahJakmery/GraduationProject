@@ -1,10 +1,8 @@
 @extends('layouts.app1')
 
-@section('title', 'Edit The Info About professor:')
-
 @section('content')
     <div class="container">
-        <form action="{{ route('professors.update', $professor->id) }}" method="post">
+        <form action="{{ route('professors.update', $professor->id) }}" method="post" enctype="multipart/form-data">
             <input name="_method" type="hidden" value="PUT">
             @csrf
 
@@ -63,36 +61,72 @@
                 </div>
             </div>
 
-            {{-- Edit Description --}}
+            {{-- Edit Scientific Grade --}}
             <div class="field">
-                <label class="label inputtitle">Description </label>
+                <label class="label inputtitle">Scientific Grade</label>
                 <div class="control">
-                    <textarea class="textarea {{ $errors->has('description') ? 'is-danger' : '' }}" name="description"
-                        placeholder="Lecture description goes here ...">{{ old('description') ?? $professor->description }}</textarea>
-                    @error('description')
+                    <input class="input {{ $errors->has('scientific_grade') ? 'is-danger' : '' }}" type="text"
+                        name="scientific_grade" placeholder="Lecture scientific_grade goes here ..."
+                        value="{{ old('scientific_grade') ?? $professor->scientific_grade }}">
+                    @error('scientific_grade')
                         <p class="help is-danger">{{ $message }}</p>
                     @enderror
                 </div>
             </div>
-            {{-- The professor's photo --}}
-            <div id="photo_upload" class="file has-name is-fullwidth my-5">
-                <label class="file-label">
-                    <input class="file-input" type="file" name="photo">
-                    <span class="file-cta">
-                        <span class="file-icon">
-                            <i class="fas fa-upload"></i>
+
+            {{-- Edit Scientific Certificate --}}
+            <div class="field">
+                <label class="label inputtitle">Scientific Certificate</label>
+                <div class="control">
+                    <input class="input {{ $errors->has('scientific_certificate') ? 'is-danger' : '' }}" type="text"
+                        name="scientific_certificate" placeholder="Lecture scientific_certificate goes here ..."
+                        value="{{ old('scientific_certificate') ?? $professor->scientific_certificate }}">
+                    @error('scientific_certificate')
+                        <p class="help is-danger">{{ $message }}</p>
+                    @enderror
+                </div>
+            </div>
+
+            {{-- Edit role --}}
+            <div class="position1">
+                <div class="field selectrole">
+                    <label class="label inputtitle">Role</label>
+                    <div class="control">
+                        <div class="select">
+                            <select name="role_id">
+                                @foreach ($roles as $role)
+                                    <option value="{{ $role->id }}"
+                                        {{ $role->id == $professor->role_id ? 'selected' : '' }}>
+                                        {{ $role->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        @error('role_id')
+                            <p class="help is-danger">{{ $message }}</p>
+                        @enderror
+                    </div>
+                </div>
+                {{-- The professor's photo --}}
+                <div id="photo_upload" class="file profphoto has-name ">
+                    <label class="file-label">
+                        <input class="file-input" type="file" name="photo">
+                        <span class="file-cta">
+                            <span class="file-icon">
+                                <i class="fas fa-upload"></i>
+                            </span>
+                            <span class="file-label">
+                                Choose a file…
+                            </span>
                         </span>
-                        <span class="file-label">
-                            Choose a file…
+                        <span class="file-name">
+                            File-Name
                         </span>
-                    </span>
-                    <span class="file-name">
-                        File-Name
-                    </span>
-                </label>
-                @error('photo')
-                    <p class="help is-danger">{{ $message }}</p>
-                @enderror
+                    </label>
+                    @error('photo')
+                        <p class="help is-danger">{{ $message }}</p>
+                    @enderror
+                </div>
             </div>
             {{-- edit button --}}
             <div class="field">
@@ -103,6 +137,8 @@
             </div>
         </form>
     </div>
+
+
 @endsection
 
 @push('script')

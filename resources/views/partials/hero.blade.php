@@ -1,7 +1,7 @@
 <section class="hero is-heroColor is-height">
     <!-- Hero head: will stick at the top -->
     <div class="hero-head">
-        <nav class="navbar">
+        <nav class="navbar is-transparent">
             <div class="container">
                 {{-- Navbar Brand --}}
                 <div class="navbar-brand">
@@ -31,7 +31,9 @@
                                 </a>
                             </div>
                         @else
+
                             {{-- Student NavBar --}}
+
                             @role('Student')
                             {{-- Search --}}
                             <div class="navbar-item">
@@ -40,7 +42,7 @@
                                         <div class="control has-icons-left">
                                             <input class="input searchwidth is-rounded" type="text" name="q"
                                                 placeholder="Search ..." value="{{ old('q') }}">
-                                            <span class="icon has-text-success is-small is-left">
+                                            <span class="icon is-small is-left">
                                                 <i class="fas fa-search"></i>
                                             </span>
                                             @error('q')
@@ -51,62 +53,92 @@
                                 </form>
                             </div>
 
+                            {{-- Tabs --}}
+                            <a class="navbar-item tab-color" href="{{ route('years.index') }}">Years</a>
+                            <a class="navbar-item tab-color" href="{{ route('studentquizzes.index') }}">َQuizzes</a>
+                            <a class="navbar-item tab-color" href="{{ route('results.index') }}">Result</a>
 
-                            <a class="navbar-item tab-color{{ Route::currentRouteName() == 'years.index' ? 'is-active' : '' }}"
-                                href="{{ route('years.index') }}">
-                                Years
-                            </a>
 
-                            <a class="navbar-item  tab-color{{ Route::currentRouteName() == 'studentquizzes.index' ? 'is-active' : '' }}"
-                                href="{{ route('studentquizzes.index') }}">َ Quizzes</a>
+                            {{-- The ProfileImage + UserName + Logout --}}
+                            <figure class="image usernavimage navbar-item has-dropdown is-hoverable">
+                                <img class="is-rounded image1" src="{{ Auth::user()->photo }}">
+                                <div class="navbar-dropdown">
+                                    <a class="navbar-item tab-color"
+                                        href="{{ route('profile.show', Auth::user()->id) }}">{{ Auth::user()->full_name }}</a>
+                                    <a class="navbar-item tab-color" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                        Logout
+                                    </a>
 
-                            <a class="navbar-item tab-color {{ Route::currentRouteName() == 'results.index' ? 'is-active' : '' }}"
-                                href="{{ route('results.index') }}">Result</a>
+                                    <form id="logout-form tab-color" action="{{ route('logout') }}" method="POST"
+                                        style="display: none;">
+                                        {{-- {{ csrf_field() }} --}}
+
+                                    </form>
+                                </div>
+                            </figure>
 
                             @endrole
 
                             {{-- Professor NavBar --}}
-                            @role('Professor')
-                            <a class="navbar-item tab-color {{ Route::currentRouteName() == 'lectures.index' ? 'is-active' : '' }}"
-                                href="{{ route('lectures.index') }}">Lecture</a>
-                            <a class="navbar-item  tab-color{{ Route::currentRouteName() == 'quizzes.index' ? 'is-active' : '' }}"
-                                href="{{ route('quizzes.index') }}">Quiz</a>
-                            <a class="navbar-item tab-color{{ Route::currentRouteName() == 'questions.index' ? 'is-active' : '' }}"
-                                href="{{ route('questions.index') }}">Question Bank</a>
-                            <a class="navbar-item tab-color {{ Route::currentRouteName() == 'options.index' ? 'is-active' : '' }}"
-                                href="{{ route('options.index') }}">Option</a>
 
-                            <a class="navbar-item tab-color{{ Route::currentRouteName() == 'professorresults.index' ? 'is-active' : '' }}"
-                                href="{{ route('professorresults.index') }}">Result</a>
+                            @role('Professor')
+                            {{-- Tabs --}}
+                            <a class="navbar-item tab-color" href="{{ route('lectures.index') }}">Lecture</a>
+                            <a class="navbar-item tab-color" href="{{ route('quizzes.index') }}">Quiz</a>
+                            <a class="navbar-item tab-color" href="{{ route('questions.index') }}">Question Bank</a>
+                            <a class="navbar-item tab-color" href="{{ route('options.index') }}">Option</a>
+
+                            {{-- The ProfileImage + UserName + Logout --}}
+                            <figure class="image usernavimage navbar-item has-dropdown is-hoverable">
+                                <img class="is-rounded image1" src="{{ Auth::user()->photo }}">
+                                <div class="navbar-dropdown">
+                                    <a class="navbar-item tab-color"
+                                        href="{{ route('profprofile.show', Auth::user()->id) }}">{{ Auth::user()->full_name }}</a>
+                                    <a class="navbar-item tab-color" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                        Logout
+                                    </a>
+
+                                    <form id="logout-form tab-color" action="{{ route('logout') }}" method="POST"
+                                        style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </div>
+                            </figure>
+
                             @endrole
 
                             {{-- Admin NavBar --}}
+
                             @role('Admin')
-                            <a class="navbar-item tab-color{{ Route::currentRouteName() == 'courses.index' ? 'is-active' : '' }}"
-                                href="{{ route('courses.index') }}">Courses</a>
-                            <a class="navbar-item tab-color{{ Route::currentRouteName() == 'professors.index' ? 'is-active' : '' }}"
-                                href="{{ route('professors.index') }}">Professor</a>
-                            <a class="navbar-item tab-color{{ Route::currentRouteName() == 'studentss.index' ? 'is-active' : '' }}"
-                                href="{{ route('students.index') }}">Students</a>
+
+                            {{-- Tabs --}}
+                            <a class="navbar-item tab-color" href="{{ route('courses.index') }}">Courses</a>
+                            <a class="navbar-item tab-color" href="{{ route('professors.index') }}">Professors</a>
+                            <a class="navbar-item tab-color" href="{{ route('students.index') }}">Students</a>
+
+                            {{-- The ProfileImage + UserName + Logout --}}
+                            <figure class="image usernavimage navbar-item has-dropdown is-hoverable">
+                                <img class="is-rounded image1" src="{{ Auth::user()->photo }}">
+                                <div class="navbar-dropdown">
+                                    <a class="navbar-item tab-color" href="#">{{ Auth::user()->full_name }}</a>
+                                    <a class="navbar-item tab-color" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                        Logout
+                                    </a>
+
+                                    <form id="logout-form tab-color" action="{{ route('logout') }}" method="POST"
+                                        style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </div>
+                            </figure>
+
                             @endrole
 
                         @endif
-                        <figure class="image usernavimage navbar-item has-dropdown is-hoverable">
-                            <img class="is-rounded image1" src="{{ Auth::user()->photo }}">
-                            <div class="navbar-dropdown">
-                                <a class="navbar-item tab-color"
-                                    href="{{ route('profile.show', Auth::user()->id) }}">{{ Auth::user()->full_name }}</a>
-                                <a class="navbar-item tab-color" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                    Logout
-                                </a>
 
-                                <form id="logout-form tab-color" action="{{ route('logout') }}" method="POST"
-                                    style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                            </div>
-                        </figure>
                     </div>
                 </div>
             </div>
@@ -118,9 +150,10 @@
         <div class="container has-text-centered">
             <h1 class="title titlecolor">
                 @yield('title')
-                <h2 class="subtitle subtitlecolor">
-                    @yield('subtitle')
-                </h2>
+            </h1>
+            <h2 class="subtitle subtitlecolor">
+                @yield('subtitle')
+            </h2>
         </div>
     </div>
 

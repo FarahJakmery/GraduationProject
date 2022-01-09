@@ -9,6 +9,8 @@ use App\Models\Year;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Role;
 use Image;
 
@@ -53,29 +55,28 @@ class StudentController extends Controller
             'phone'                => 'required|string|min:10|max:25',
             'year_id'              => 'required|exists:years,id',
             'role_id'              => 'required|exists:roles,id',
+            'number_id'            => 'required|exists:student_numbers,student_number',
         ]);
+
+        $file = $request->file('photo');
+        $file = $file->store('profile-pictures', 'public');
 
         $user = new User();
         $user->full_name = $request->full_name;
         $user->email     = $request->email;
         $user->password  = Hash::make($request->password);
         $user->phone     = $request->phone;
-
-        $file = $request->file('photo');
-        $url = '/storage/photo' . $request->id . '.' . $file->extension();
-
-        Image::make($file)
-            ->resize(300, 250)
-            ->save(public_path($url));
-        $user->photo = $url;
+        $user->photo     = Storage::url($file);
         $user->save();
 
         $role = Role::find($request->role_id);
         $user->assignRole($role);
 
+
         $student = Student::create([
             'year_id'     => $request->year_id,
             'user_id'     => $user->id,
+            'number_id'   =>  $request->number_id,
         ]);
 
         if ($user and $student) {
@@ -122,42 +123,42 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $student = Student::find($id);
         $request->validate([
             'full_name'            => 'required|string|min:4|max:255',
             'photo'                => 'required|file|image',
-            'email'                => 'required|string|email|max:255|unique:users',
+            'email'                => 'required|string|email|max:255', Rule::unique('users')->ignore($student->id),
             'password'             => 'required|string|min:8',
             'phone'                => 'required|string|min:10|max:25',
             'year_id'              => 'required|exists:years,id',
             'role_id'              => 'required|exists:roles,id',
+            'number_id'            => 'required|exists:student_numbers,student_number',
         ]);
 
-        $user = new User();
-        $user->full_name = $request->full_name;
-        $user->email     = $request->email;
-        $user->password  = Hash::make($request->password);
-        $user->phone     = $request->phone;
-
         $file = $request->file('photo');
-        $url = '/storage/photo' . $request->id . '.' . $file->extension();
+        $file = $file->store('profile-pictures', 'public');
 
-        Image::make($file)
-            ->resize(300, 250)
-            ->save(public_path($url));
-        $user->photo = $url;
-        $user->save();
+        $student->update([
+            'year_id'     => $request->year_id,
+            'user_id'     => $student->user->id,
+            'number_id'     => $request->number_id,
+
+        ]);
+
+        $user = User::find($student->user->id);
+        $user->update([
+            'full_name' => $request->full_name,
+            'phone'     => $request->phone,
+            'email'     => $request->email,
+            'password'  => Hash::make($request->password),
+            'photo'     => Storage::url($file),
+        ]);
 
         $role = Role::find($request->role_id);
         $user->assignRole($role);
 
-        $student = new Student();
-        $student->update([
-            'year_id'     => $request->year_id,
-            'user_id'     => $user->id,
-        ]);
-
         if ($user and $student) {
-            request()->session()->flash('success', 'Student was created successfully.');
+            request()->session()->flash('success', 'Student was updated successfully.');
         } else {
             request()->session()->flash('danger', 'Something went wrong.');
         }

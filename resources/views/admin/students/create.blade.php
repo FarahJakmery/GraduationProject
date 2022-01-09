@@ -1,6 +1,6 @@
 @extends('layouts.app1')
 
-@section('title', 'Create Student')
+
 
 @section('content')
     <div class="container">
@@ -38,7 +38,7 @@
 
             {{-- password --}}
             <div class="field">
-                <label class="label inputtitle">PassWord</label>
+                <label class="label inputtitle">Password</label>
                 <div class="control">
                     <input class="input {{ $errors->has('password') ? 'is-danger' : '' }}" type="password" name="password"
                         value="{{ old('password') }}">
@@ -55,6 +55,17 @@
                     <input class="input {{ $errors->has('phone') ? 'is-danger' : '' }}" type="text" name="phone"
                         value="{{ old('phone') }}">
                     @error('phone')
+                        <p class="help is-danger">{{ $message }}</p>
+                    @enderror
+                </div>
+            </div>
+            {{-- student number --}}
+            <div class="field">
+                <label class="label inputtitle">Student Number</label>
+                <div class="control">
+                    <input class="input {{ $errors->has('number_id') ? 'is-danger' : '' }}" name="number_id"
+                        value="{{ old('number_id') }}">
+                    @error('number_id')
                         <p class="help is-danger">{{ $message }}</p>
                     @enderror
                 </div>
@@ -78,7 +89,7 @@
                 </div>
 
                 {{-- select  role --}}
-                <div class="field selectprof">
+                <div class="field studentrole">
                     <label class="label inputtitle">Select Role</label>
                     <div class="control">
                         <div class="select">
@@ -95,7 +106,8 @@
                 </div>
             </div>
             {{-- The Student's Photo --}}
-            <div id="photo_upload" class="has-name is-fullwidth my-4">
+
+            <div id="photo_upload" class="file has-name  my-5">
                 <label class="file-label">
                     <input class="file-input" type="file" name="photo">
                     <span class="file-cta">
@@ -103,17 +115,18 @@
                             <i class="fas fa-upload"></i>
                         </span>
                         <span class="file-label">
-                            Choose a picture…
+                            Student photo,Choose an Image
                         </span>
                     </span>
                     <span class="file-name">
-                        File-Name
+                        No file uploaded
                     </span>
                 </label>
                 @error('photo')
                     <p class="help is-danger">{{ $message }}</p>
                 @enderror
             </div>
+
 
             {{-- save button --}}
             <div class="field">

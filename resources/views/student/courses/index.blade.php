@@ -1,5 +1,5 @@
-@extends('layouts.app1')
-@section('title', 'This Semester Include This Courses')
+@extends('layouts.app3')
+
 @section('content')
     <div class="container">
         <div class="columns is-multiline">

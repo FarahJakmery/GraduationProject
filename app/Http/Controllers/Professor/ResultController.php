@@ -3,12 +3,8 @@
 namespace App\Http\Controllers\Professor;
 
 use App\Http\Controllers\Controller;
-use App\Models\Course;
 use App\Models\QuizResult;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Facades\Auth;
 
 class ResultController extends Controller
 {
@@ -17,19 +13,13 @@ class ResultController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        // $users = User::whereHas('student', function (Builder $query) use ($user_id) {
-        //     $query->whereHas('courses', function (Builder $q) use ($user_id) {
-        //         $q->whereHas('quizzes', function (Builder $q1) use ($user_id) {
-        //             $q1->where('quizresults', $user_id);
-        //         });
-        //     });
-        // })->get();
-        $courses = Course::where("professor_id", Auth::user()->professor->id)->get();
-        return view("professor.results.index", ['courses' => $courses]);
-    }
 
+        $results = QuizResult::where("quiz_id", $id)->get();
+
+        return view('professor.results.index', ['results' => $results]);
+    }
     /**
      * Show the form for creating a new resource.
      *

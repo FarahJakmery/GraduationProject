@@ -1,10 +1,9 @@
 @extends('layouts.app1')
 
-@section('title', 'Edit Course')
 
 @section('content')
     <div class="container">
-        <form action="{{ route('courses.update', $course->id) }}" method="post">
+        <form action="{{ route('courses.update', $course->id) }}" method="post" enctype="multipart/form-data">
             <input name="_method" type="hidden" value="PUT">
             @csrf
             {{-- origin image --}}
@@ -81,7 +80,7 @@
                 </div>
             </div>
             {{-- course logo --}}
-            <div id="logo_upload" class="file has-name is-fullwidth my-5">
+            <div id="logo_upload" class="file has-name  my-5">
                 <label class="file-label">
                     <input class="file-input" type="file" name="logo">
                     <span class="file-cta">

@@ -65,7 +65,7 @@
             </div>
 
             {{-- Edit Button --}}
-            <a href="{{ route('students.edit', $student->user->id) }}">
+            <a href="{{ route('students.edit', $student->id) }}">
                 <button class="button profile-button">
                     Edit your Info
                 </button>

@@ -1,6 +1,6 @@
 @extends('layouts.app1')
 
-@section('title', 'Create semester')
+
 @section('subtitle', 'this for create a new semester')
 
 @section('content')

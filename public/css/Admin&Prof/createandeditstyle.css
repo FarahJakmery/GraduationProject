@@ -14,9 +14,10 @@
     max-width: 984px;
     min-width: 0px;
 }
-.container form .file {
-    width: 449px;
-}
+/* .container form .file {
+    overflow: hidden;
+    perspective: 1px;
+} */
 .file-cta {
     color: white;
     background-color: #d5b361;
@@ -30,6 +31,27 @@
     display: flex;
     justify-content: flex-start;
     margin-bottom: 13px;
+}
+.position .studentrole {
+    margin-left: 690px;
+}
+.position .pdffile {
+    margin-left: 350px;
+}
+.position .profilephoto {
+    left: 530px;
+    top: 45px;
+}
+.position1 {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 13px;
+}
+.position1 .profphoto {
+    margin-left: 575px;
+    /* padding-bottom: 66px; */
+    margin-top: 40px;
+    top: 20px;
 }
 .container form .control button {
     color: white;
@@ -66,6 +88,7 @@
 .field .inputtitle {
     color: #221f33;
     font-size: larger;
+    margin-left: 6px;
 }
 .checkbox {
     color: #221f33;
@@ -78,16 +101,21 @@
     font-size: large;
 }
 .position .selectprof {
-    margin-left: 400px;
+    margin-left: 500px;
 }
-.position .pos {
+.position .pos .file-label1 {
     margin-top: 37px;
-    margin-left: 372px;
+    margin-left: 550px;
+    border-color: #d5b361;
+    border-radius: 20px;
 }
 .container form .field .checkrole input {
     width: 30px;
 }
 
 .position .marginleft {
-    margin-left: 300px;
+    margin-left: 549px;
+}
+.studentphoto {
+    margin-bottom: 20px;
 }

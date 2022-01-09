@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Professor;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Storage;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Lecture;
 use App\Models\Course;
 use App\Models\Professor;
@@ -46,7 +46,7 @@ class LectureController extends Controller
         $request->validate([
             'name'             => 'required|string|min:2|max:255',
             'description'      => 'required|string|min:15',
-            'video'            => 'required|mimetypes:video/mp4,video/avi,video/mpeg,video/quicktime',
+            'video'            => 'required|mimetypes:video/mp4,video/avi,video/mpeg,video/quicktime,video/x-ms-wmv,video/x-msvideo, video/3gpp,video/x-flv',
             'pdf'              => 'required|file',  // pdf , word , powerpoint   |mimes:application/pdf,application/msword,application/vnd.ms-powerpoint'
             'course_id'        => 'required|exists:courses,id',
         ]);

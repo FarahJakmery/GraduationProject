@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Spatie\Permission\Models\Role;
+use Illuminate\Validation\Rule;
 use Image;
 
 class ProfessorController extends Controller
@@ -46,13 +47,14 @@ class ProfessorController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'full_name'            => 'required|string|min:4|max:255',
-            'photo'                => 'required|file|image',
-            'email'                => 'required|string|email|max:255|unique:users',
-            'password'             => 'required|string|min:8',
-            'phone'                => 'required|string|min:10|max:25',
-            'description'          => 'required|string|min:4',
-            'role_id'              => 'required|exists:roles,id',
+            'full_name'                 => 'required|string|min:4|max:255',
+            'photo'                     => 'required|file|image',
+            'email'                     => 'required|string|email|max:255|unique:users',
+            'password'                  => 'required|string|min:8',
+            'phone'                     => 'required|string|min:10|max:25',
+            'scientific_grade'          => 'required|string|min:4',
+            'scientific_certificate'    => 'required|string|min:4',
+            'role_id'                   => 'required|exists:roles,id',
         ]);
 
         $file = $request->file('photo');
@@ -70,8 +72,9 @@ class ProfessorController extends Controller
         $user->assignRole($role);
 
         $professor = Professor::create([
-            'description'     => $request->description,
-            'user_id'         => $user->id,
+            'scientific_grade'           => $request->scientific_grade,
+            'scientific_certificate'     => $request->scientific_certificate,
+            'user_id'                    => $user->id,
         ]);
 
         if ($user and $professor) {
@@ -120,51 +123,48 @@ class ProfessorController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $professor = Professor::find($id);
         $request->validate([
-            'full_name'            => 'required|string|min:4|max:255',
-            'photo'                => 'required|file|image',
-            'email'                => 'required|string|email|max:255|unique:users',
-            'password'             => 'required|string|min:8',
-            'phone'                => 'required|string|min:10|max:25',
-            'description'          => 'required|string|min:4',
-            'role_id'              => 'required|exists:roles,id',
+            'full_name'                 => 'required|string|min:4|max:255',
+            'photo'                     => 'required|file|image',
+            'email'                     => 'required|string|email|max:255', Rule::unique('users')->ignore($professor->id),
+            'password'                  => 'required|string|min:8',
+            'phone'                     => 'required|string|min:10|max:25',
+            'scientific_grade'          => 'required|string|min:4',
+            'scientific_certificate'    => 'required|string|min:4',
+            'role_id'                   => 'required|exists:roles,id',
         ]);
-        $user = new User();
-        $user->full_name = $request->full_name;
-        $user->email     = $request->email;
-        $user->password  = Hash::make($request->password);
-        $user->phone     = $request->phone;
 
         $file = $request->file('photo');
-        $url = '/storage/photo' . $request->id . '.' . $file->extension();
+        $file = $file->store('profile-pictures', 'public');
 
-        Image::make($file)
-            ->resize(300, 250)
-            ->save(public_path($url));
-        $user->photo = $url;
-        $user->save();
+
+        $professor->update([
+            'scientific_grade'           => $request->scientific_grade,
+            'scientific_certificate'     => $request->scientific_certificate,
+            'user_id'                    => $professor->user->id,
+        ]);
+
+        $user = User::find($professor->user->id);
+        $user->update([
+            'full_name' => $request->full_name,
+            'phone'     => $request->phone,
+            'email'     => $request->email,
+            'password'  => Hash::make($request->password),
+            'photo'     => Storage::url($file),
+        ]);
 
         $role = Role::find($request->role_id);
         $user->assignRole($role);
 
-        $professor = Professor::create([
-            'description'     => $request->description,
-            'user_id'         =>  $user->id,
-        ]);
         if ($user and $professor) {
-            request()->session()->flash('success', 'professor was created successfully.');
+            request()->session()->flash('success', 'professor was updated successfully.');
         } else {
             request()->session()->flash('danger', 'Something went wrong.');
         }
         return redirect()->route('professors.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $professor = Professor::destroy($id);

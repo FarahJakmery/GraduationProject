@@ -1,6 +1,4 @@
 @extends('layouts.app1')
-
-@section('title', 'All professors')
 @section('content')
 
     {{-- Button To Add A New professor --}}
@@ -33,7 +31,10 @@
                         <p>Phone</p>
                     </th>
                     <th>
-                        <p>Description</p>
+                        <p>Scientific Grade</p>
+                    </th>
+                    <th>
+                        <p>Scientific Certificate</p>
                     </th>
                     <th>
                         <p>Created At</p>
@@ -63,8 +64,11 @@
                         <th>
                             <p>{{ $professor->user->phone }}</p>
                         </th>
-                        <th class="descriptionCell">
-                            <p>{{ $professor->description }}</p>
+                        <th>
+                            <p>{{ $professor->scientific_grade }}</p>
+                        </th>
+                        <th>
+                            <p>{{ $professor->scientific_certificate }}</p>
                         </th>
                         <th>
                             <p>{{ $professor->created_at }}</p>

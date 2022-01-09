@@ -1,7 +1,5 @@
 @extends('layouts.app1')
 
-@section('title', 'Create Course')
-@section('subtitle', 'this for create a new course')
 
 @section('content')
     <div class="container">
@@ -78,7 +76,7 @@
             </div>
 
             {{-- Course logo --}}
-            <div id="logo_upload" class="file has-name is-fullwidth my-5">
+            <div id="logo_upload" class="file has-name  my-5">
                 <label class="file-label">
                     <input class="file-input" type="file" name="logo">
                     <span class="file-cta">

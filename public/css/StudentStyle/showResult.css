@@ -1,0 +1,20 @@
+.showResultCard {
+    background-color: #242136;
+    box-shadow: 0 10px 20px #808080;
+    border-radius: 10px;
+    height: 300px;
+}
+
+div .showResultImage img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+.profileSubtitle1 {
+    color: #ffffffc9;
+    font-size: x-large;
+}
+.profileSubtitle2 {
+    color: #d5b361;
+    font-size: larger;
+}

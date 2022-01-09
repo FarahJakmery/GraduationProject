@@ -27,6 +27,10 @@
     font-size: larger;
 }
 
+a.navbar-item:hover {
+    color: #ffffff;
+}
+
 .titlecolor {
     color: #d5b361;
     font-size: 65px;
@@ -62,5 +66,10 @@
     border-color: #d5b361;
 }
 .navbar-item form .field .searchwidth {
-    width: 236.6px;
+    width: 300.6px;
+    margin-right: 20px;
+}
+
+.control.has-icons-left .icon {
+    color: #d5b361;
 }

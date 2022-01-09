@@ -1,6 +1,5 @@
 @extends('layouts.app1')
 
-@section('title', 'All Students')
 @section('content')
 
     {{-- Button To Add A New student --}}

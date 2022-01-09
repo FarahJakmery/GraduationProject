@@ -1,6 +1,4 @@
-@extends('layouts.app1')
-@section('title', 'Choose The year')
-@section('subtitle', 'Choose .........')
+@extends('layouts.app3')
 
 @section('content')
     <div class="container">

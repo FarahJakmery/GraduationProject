@@ -1,0 +1,194 @@
+.is-lightgray {
+    background-color: #f1effe;
+}
+.is-white {
+    background-color: #ffffff;
+}
+.has-white-text {
+    color: #ffffff;
+}
+.footer.has-darkblue-background {
+    background-color: #242136;
+}
+.has-margin-top {
+    margin-top: 70px;
+}
+.image.is-96x96.is-centered {
+    margin: 0 auto;
+}
+#nav {
+    height: 65px;
+    background-color: #242136;
+}
+h5.has-white-text {
+    color: #ffffff;
+}
+h5.is-gold {
+    color: #e2c47b;
+}
+p.has-white-text {
+    color: #ffffff;
+}
+.columns.mt-5.has-pr-60 {
+    padding-right: 60px;
+}
+.columns.mt-5.has-pr-90 {
+    padding-right: 90px;
+}
+.columns.has-mr-50 {
+    margin-right: 100px;
+}
+#is-card {
+    background-color: #ffffff;
+    height: 270px;
+    padding-top: 40px;
+    border-radius: 50px 50px 0px 0px;
+    box-shadow: 0px 15px 16.83px 0.17px rgba(56, 56, 56, 0.2);
+}
+h2.is-gold {
+    color: #e2c47b;
+}
+
+.title.is-3 {
+    color: #e2c47b;
+    margin-bottom: 0px;
+}
+.box-text {
+    color: black;
+    margin-top: 0px;
+}
+.has-image-background {
+    width: 700px;
+    height: 400px;
+    background-image: url("istockphoto-1263424631-170667a.jpg");
+    background-position: center;
+    background-size: cover;
+    display: inline-block;
+}
+.story-card {
+    display: inline-block;
+    background-color: #ffffff;
+    height: 200px;
+    width: 500px;
+    padding: 20px;
+    box-shadow: 0px 15px 16.83px 0.17px rgba(56, 56, 56, 0.2);
+    position: relative;
+    bottom: 140px;
+    right: 40px;
+}
+#image-position {
+    position: relative;
+    top: -50px;
+    left: -50px;
+}
+#image2-position {
+    position: relative;
+    top: 40px;
+    left: 50px;
+}
+
+.has-decoration {
+    background-image: url("Decoration.png");
+    background-position: center;
+    background-size: 800px 550px;
+    background-repeat: no-repeat;
+}
+.is-colorliss {
+    background-color: rgb(255, 255, 255, 0.9);
+}
+.image.is-128x128.is-pulled-left.is-overlay.is-relative {
+    bottom: 40px;
+    right: 20px;
+}
+#is-team-card {
+    background-color: #ffffff;
+    height: 260px;
+    padding-top: 25px;
+    border-radius: 70px 70px 0px 0px;
+    box-shadow: 0px 15px 16.83px 0.17px rgba(56, 56, 56, 0.2);
+}
+#signin-button {
+    width: 130px;
+    height: 40px;
+    background-color: #e2c47b;
+    color: #ffffff;
+    font-weight: bold;
+    border-radius: 16px;
+    border: none;
+}
+#signin-button:hover {
+    background-color: #ffffff;
+    color: #e2c47b;
+    border: 3px solid;
+}
+#Getstarted-button {
+    width: 150px;
+    height: 50px;
+    background-color: #242136;
+    color: #ffffff;
+    font-weight: bold;
+    border-radius: 15px;
+    border: none;
+}
+#Getstarted-button:hover {
+    background-color: #ffffff;
+    color: #242136;
+    border-radius: 15px;
+    border: 2px solid;
+}
+.content.is-vcentered.has-white-text {
+    font-size: 26px;
+}
+.has-size-20 {
+    width: 20px;
+    height: 20px;
+}
+.icon.has-white-text {
+    color: #ffffff;
+}
+.icon.has-white-text.has-pl-90 {
+    padding-left: 90px;
+}
+.icon.has-white-text:hover {
+    color: #e2c47b;
+}
+#nav-item {
+    font-weight: 600;
+    color: #ffffff;
+}
+#nav-item:hover {
+    background-color: #242136;
+    color: #e2c47b;
+}
+#logo:hover {
+    background-color: #242136;
+}
+#input-field {
+    width: 375px;
+}
+#input-field:hover {
+    border: 1px solid #242136;
+    box-shadow: none;
+}
+#input-select {
+    width: 375px;
+}
+#Register-button {
+    width: 150px;
+    height: 50px;
+    background-color: #242136;
+    color: #ffffff;
+    font-weight: bold;
+    border-radius: 15px;
+    border: none;
+    display: block;
+}
+#Register-button:hover {
+    background-color: #ffffff;
+    color: #242136;
+    border-radius: 15px;
+    border: 2px solid;
+}
+.has-ml-90px {
+    margin-left: 90px;
+}

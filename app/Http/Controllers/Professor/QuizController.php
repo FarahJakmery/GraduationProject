@@ -82,7 +82,7 @@ class QuizController extends Controller
     public function edit($id)
     {
         $questions = Question::all();
-        // $courses = Course::all();
+
         $courses = Course::where('professor_id', Auth::user()->professor->id)->get();
         $quiz = Quiz::find($id);
         return view('professor.quizzes.edit', ['quiz' => $quiz, 'courses' => $courses, "questions" => $questions]);

@@ -1,7 +1,5 @@
-@extends('layouts.app1')
+@extends('layouts.app3')
 
-@section('title', 'Semesters')
-@section('subtitle', 'Choose .........')
 
 @section('content')
     <div class="container">

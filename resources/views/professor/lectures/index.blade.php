@@ -1,6 +1,5 @@
 @extends('layouts.app1')
 
-@section('title', 'this course content this lectures')
 @section('content')
 
     {{-- Button To Add A New Option --}}

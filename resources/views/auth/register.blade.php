@@ -59,8 +59,16 @@
                 <x-input id="password_confirmation" class="block authinput" type="password" name="password_confirmation"
                     required />
             </div>
+            <!-- Student Number -->
+            <div class="mt-4">
+                <x-label for="name" :value="('University ID')" />
+                <x-input id="name" class="block  authinput  " type="text" name="number_id" :value="old('number_id')"
+                    required autofocus />
+            </div><br>
+
             {{-- photo --}}
-            <div class="mt-4 picture">
+            <div class="mt-4 picture ">
+                <x-label for="name" :value="('Select Photo')" />
                 <label class=" flex flex-col items-center authinput  authphoto border border-blue  ">
 
                     <span class="mt-2  authtitle text-base leading-normal">Upload a Photo</span>

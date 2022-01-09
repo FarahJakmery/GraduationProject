@@ -1,49 +1,40 @@
 .questionstyle {
     color: #242136;
-    font-size: 45px;
+    font-size: 25px;
 }
 .markstyle {
     color: #d5b361;
-    font-size: 45px;
+    font-size: 20px;
 }
-
 .optionstyle {
     border: 0.5px solid grey;
-    font-size: 30px;
-    /* border-right: none; */
+    color: #242136;
+    font-size: 20px;
     padding: 4px;
-    width: 100%;
-    color: #242136;
     text-align: left;
+    margin-top: 5px;
+    margin-bottom: 2px;
+    width: 100%;
+    border: none;
 }
-.optionstyle:hover {
-    box-shadow: 0 2px 5px #0a1516c9;
-}
-.radion {
-    display: grid;
-    grid-gap: 0.2em;
-    color: #242136;
-    border: 2px solid;
-    border-right: none;
-    border-inline-start: 50px solid #242136;
-    display: flex;
-}
-
 .radiosize {
-    width: 25px;
-    height: 25px;
-}
-
-.tablestyle {
-    width: 1279px;
-    margin: 0 auto;
+    width: 15px;
+    height: 15px;
 }
 .button.is-link.substyle {
     background-color: #d5b361;
     color: white;
-    width: 197px;
-    height: 54px;
-    size: 20px;
-    font-style: italic;
+    width: 160px;
+    height: 50px;
     border-radius: 20px;
+}
+.titlequize {
+    text-align: center;
+    font-size: x-large;
+    color: #242136;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+.submitsize {
+    font-size: large;
 }

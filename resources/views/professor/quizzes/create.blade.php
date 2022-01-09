@@ -1,8 +1,4 @@
 @extends('layouts.app1')
-
-@section('title', 'Create Quiz')
-@section('subtitle', 'this for create a new quiz')
-
 @section('content')
     <div class="container">
         <form action="{{ route('quizzes.store') }}" method="post">
@@ -30,12 +26,11 @@
                     @enderror
                 </div>
             </div>
-
             {{-- quiz title --}}
             <div class="field">
-                <label class="label inputtitle quizinput"> Quiz Title:</label>
+                <label class="label inputtitle"> Quiz Title:</label>
                 <div class="control">
-                    <input class="input {{ $errors->has('name') ? 'is-danger' : '' }}" type="text" name="name"
+                    <input class="input{{ $errors->has('name') ? 'is-danger' : '' }}" type="text" name="name"
                         placeholder="EX:First Quiz " value="{{ old('name') }}">
                     @error('name')
                         <p class="help is-danger">{{ $message }}</p>

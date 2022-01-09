@@ -17,6 +17,7 @@ class CreateStudentsTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->foreignId('year_id');
+            $table->foreignId('number_id');
             $table->timestamps();
         });
     }

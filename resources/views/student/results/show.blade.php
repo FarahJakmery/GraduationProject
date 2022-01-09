@@ -1,32 +1,30 @@
 @extends('layouts.app1')
 
-@section('title')
-
 @section('content')
     <div class="container">
         <div class="columns is-centered">
-            <div class="column is-8">
-                <div class="card">
+            <div class="column is-4">
+                <div class="card showResultCard">
                     <div class="card-content">
                         <div class="media">
-                            <div class="media-left">
-                                <figure class="image is-96x96">
-                                    <img src="{{ $quiz_details->user->photo }}" alt="Placeholder image">
-                                </figure>
+                            <div class="showResultImage">
+                                <img src="{{ $quiz_details->user->photo }}">
                             </div>
-                            <div class="media-content">
-                                <p class="title is-4">{{ $quiz_details->user->full_name }}</p>
-                                <p class="subtitle is-6">{{ $quiz_details->user->email }}</p>
+                            <div class="media-content ">
+                                <p class="subtitle username is-4 ml-2 mt-6">{{ $quiz_details->user->full_name }}</p>
                             </div>
                         </div>
                         <div class="content">
-                            <b>Result of your test</b>
-                            <br>
-                            <p>Total Results: {{ $quiz_details->quiz_result }}/{{ $full_mark }}</p>
-                            <p>
-                                <b>Date :</b>
-                            <p id="date"></p>
+                            <p class="subtitle profileSubtitle1"><b>The Result of your test</b></p>
+
+                            <p class="subtitle profileSubtitle1">
+                            <p class="subtitle profileSubtitle2">Total Results:
+                                {{ $quiz_details->quiz_result }}/{{ $full_mark }}</p>
                             </p>
+                            {{-- <p>
+                                <b>Date :</b>
+                            <p id=" date"></p>
+                            </p> --}}
                         </div>
                     </div>
                 </div>

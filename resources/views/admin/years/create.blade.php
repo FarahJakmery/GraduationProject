@@ -1,6 +1,5 @@
 @extends('layouts.app1')
 
-@section('title', 'Create year')
 @section('subtitle', 'this for create a new year')
 
 @section('content')

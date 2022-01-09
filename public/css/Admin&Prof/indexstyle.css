@@ -28,14 +28,14 @@ table thead tr th p {
     text-align: center;
     font-size: large;
 }
-
+/*
 table tbody tr th.descriptionCell {
     max-width: 40px;
     text-overflow: ellipsis;
     text-decoration: none;
     overflow: hidden;
     white-space: nowrap;
-}
+} */
 
 table tbody tr th p {
     color: #221f33;
@@ -110,4 +110,9 @@ table tbody tr th p {
 .StartQuizButton:hover {
     background-color: #d5b361;
     color: #221f33;
+}
+
+.field.is-grouped {
+    display: flex;
+    justify-content: center;
 }

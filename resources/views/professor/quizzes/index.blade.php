@@ -1,7 +1,5 @@
 @extends('layouts.app1')
 
-@section('title', 'All Quizzes')
-
 @section('content')
 
     {{-- Button To Add A New Course --}}
@@ -62,7 +60,7 @@
                             <p>{{ $quiz->updated_at }}</p>
                         </th>
                         <th>
-                            <div class="field is-grouped">
+                            <div class="field is-grouped ">
                                 <p class="control">
                                     <a href="{{ route('quizzes.show', $quiz->id) }}">
                                         <span class="iconView"></span>
@@ -80,6 +78,13 @@
                                         <span class="iconDelete"></span>
                                     </button>
                                 </form>
+                                </p>
+                                <p class="control">
+                                    <a href="{{ route('professorresults.index', $quiz->id) }}">
+                                        <button class="button StartQuizButton">
+                                            show result
+                                        </button>
+                                    </a>
                                 </p>
                             </div>
                         </th>

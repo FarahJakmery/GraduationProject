@@ -1,6 +1,5 @@
-@extends('layouts.app1')
+@extends('layouts.app3')
 
-@section('title', 'This course Include This Lectures')
 @section('content')
     <div class="container">
         <div class="columns is-multiline">
@@ -23,7 +22,7 @@
                             </button>
                         </a>
 
-                        <a href="">
+                        <a href="{{ route('downloadfile.download', $lecture->id) }}">
                             <button class="buttonstyle2">
                                 <span class="icon-text">
                                     <span class="icon">

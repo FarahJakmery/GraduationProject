@@ -1,5 +1,5 @@
 @extends('layouts.app1')
-@section('title', 'Create Question with options')
+
 @section('content')
     <div class="container">
         <form action="{{ route('questions.store') }}" method="post">
@@ -57,7 +57,7 @@
                 </label>
             @endfor
             {{-- The Submit button --}}
-            <div class="field">
+            <div class="field mt-4">
                 <div class="control">
                     <button class="button ">Save Question</button>
                 </div>

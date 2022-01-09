@@ -1,7 +1,5 @@
 @extends('layouts.app1')
 
-@section('title', 'This is All Options That You have')
-
 @section('content')
 
     {{-- Button To Add A New Option --}}

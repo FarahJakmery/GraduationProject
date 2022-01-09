@@ -1,0 +1,16 @@
+.cardadminstyle {
+    width: 700px;
+    margin-left: 300px;
+    margin-top: 30px;
+    box-shadow: 0 10px 20px #808080;
+    background: white;
+}
+
+.titleadmin {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: #221f33;
+}
+.hightlogo {
+    height: 465px;
+}

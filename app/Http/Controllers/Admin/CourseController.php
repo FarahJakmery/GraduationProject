@@ -7,6 +7,7 @@ use App\Models\Course;
 use App\Models\Professor;
 use App\Models\Semester;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Image;
 
 
@@ -46,30 +47,25 @@ class CourseController extends Controller
     {
         $request->validate([
             'name'                  => 'required|string|min:4|max:255',
+            'logo'                  => 'required|file|image',
             'description'           => 'required|string|min:15',
-            'logo'                  => 'required|file',
-            'semester_id'           => 'required|exists:semesters,id',
             'professor_id'          => 'required|exists:professors,id',
+            'semester_id'           => 'required|exists:semesters,id',
 
         ]);
 
-
-        $course = new Course();
-        $course->name = $request->name;
-        $course->description = $request->description;
-        $course->logo = $request->logo;
-        $course->semester_id = $request->semester_id;
-        $course->professor_id = $request->professor_id;
-
         $file = $request->file('logo');
-        $url = '/storage/logo' . $request->id . '.' . $file->extension();
+        $file = $file->store('Course-logo', 'public');
 
-        Image::make($file)
-            ->resize(300, 250)
-            ->save(public_path($url));
+        $course               = new Course();
+        $course->name         = $request->name;
+        $course->description  = $request->description;
+        $course->semester_id  = $request->semester_id;
+        $course->professor_id = $request->professor_id;
+        $course->logo         = Storage::url($file);
+        $course->save();
 
-        $course->logo = $url;
-        if ($course->save()) {
+        if ($course) {
 
             request()->session()->flash('success', 'course was created successfully.');
         } else {
@@ -119,15 +115,26 @@ class CourseController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name'     => 'required|string|min:2|max:255',
-            'logo'     => 'required|file|image',
-            'description'     => 'required|string|min:2|max:255',
-            'professor_id'       => 'required|exists:professors,id',
-            'semester_id'       => 'required|exists:semesters,id',
+            'name'          => 'required|string|min:2|max:255',
+            'logo'          => 'required|file|image',
+            'description'   => 'required|string|min:15',
+            'professor_id'  => 'required|exists:professors,id',
+            'semester_id'   => 'required|exists:semesters,id',
 
         ]);
+
+        $file = $request->file('logo');
+        $file = $file->store('Course-logo', 'public');
+
+
         $course = Course::find($id);
-        $course->update($request->all());
+        $course->update([
+            'name'            => $request->name,
+            'description'     => $request->description,
+            'professor_id'    => $request->professor_id,
+            'semester_id'     => $request->semester_id,
+            'logo'            => Storage::url($file),
+        ]);
 
         if ($course)
             request()->session()->flash('success', 'course was updated successfully.');

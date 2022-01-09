@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Enroll;
+
 use App\Models\Lecture;
 use Illuminate\Support\Facades\Storage;
 
@@ -60,6 +60,7 @@ class LectureController extends Controller
         $file = $lecture->pdf;
         $filename = str_replace('/storage/', '/', $file);
         return Storage::download("{$filename}", "lect-{$lecture->id}.pdf");
+        // return response()->download($pathToFile, $name, $headers);
     }
 
     /**

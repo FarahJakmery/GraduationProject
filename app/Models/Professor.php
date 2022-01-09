@@ -10,7 +10,7 @@ use App\Models\Course;
 class Professor extends Model
 {
     use HasFactory;
-    protected $fillable = ["description","user_id"];
+    protected $fillable = ['scientific_grade', 'scientific_certificate', 'user_id'];
 
     //Get the user that owns to professor.
     public function user()

@@ -15,7 +15,8 @@ class CreateProfessorsTable extends Migration
     {
         Schema::create('professors', function (Blueprint $table) {
             $table->id();
-            $table->string('description');
+            $table->string('scientific_grade');
+            $table->string('scientific_certificate');
             $table->foreignId('user_id');
             $table->timestamps();
         });

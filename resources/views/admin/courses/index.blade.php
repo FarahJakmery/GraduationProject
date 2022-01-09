@@ -1,6 +1,5 @@
 @extends('layouts.app1')
 
-@section('title', 'this course content this lectures')
 @section('content')
 
     {{-- Button To Add A New Course --}}
@@ -22,6 +21,9 @@
                 <tr>
                     <th>
                         <p>ID</p>
+                    </th>
+                    <th>
+                        <p>Year</p>
                     </th>
                     <th>
                         <p>Semester</p>
@@ -53,6 +55,9 @@
                     <tr>
                         <th>
                             <p>{{ $course->id }}</p>
+                        </th>
+                        <th>
+                            <p>{{ $course->semester->year->name }}</p>
                         </th>
                         <th>
                             <p>{{ $course->semester->name }}</p>

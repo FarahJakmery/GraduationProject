@@ -1,7 +1,5 @@
 @extends('layouts.app1')
 
-@section('title', 'Edit your profile')
-
 @section('content')
     <div class="container">
         <form action="{{ route('profprofile.update', $user->id) }}" method="post" enctype="multipart/form-data">
@@ -42,7 +40,8 @@
             <div class="field">
                 <label class="label inputtitle">Password</label>
                 <div class="control">
-                    <input class="input {{ $errors->has('password') ? 'is-danger' : '' }}" type="text" name="password">
+                    <input class="input {{ $errors->has('password') ? 'is-danger' : '' }}" type="password"
+                        name="password">
                     @error('password')
                         <p class="help is-danger">{{ $message }}</p>
                     @enderror
@@ -61,18 +60,31 @@
                 </div>
             </div>
 
-            {{-- Edit Description --}}
+            {{-- Edit Scientific Certificate --}}
             <div class="field">
-                <label class="label inputtitle">Description </label>
+                <label class="label inputtitle">Scientific Certificate</label>
                 <div class="control">
-                    <textarea class="textarea {{ $errors->has('description') ? 'is-danger' : '' }}" name="description"
-                        placeholder="your description goes here ...">{{ old('description') ?? $user->professor->description }}</textarea>
-                    @error('description')
+                    <input class="input {{ $errors->has('scientific_certificate') ? 'is-danger' : '' }}" type="text"
+                        name="scientific_certificate" placeholder="Lecture scientific_certificate goes here ..."
+                        value="{{ old('scientific_certificate') ?? $user->professor->scientific_certificate }}">
+                    @error('scientific_certificate')
                         <p class="help is-danger">{{ $message }}</p>
                     @enderror
                 </div>
             </div>
-            <div class="position">
+
+            <div class="field">
+                <label class="label inputtitle">Scientific Grade</label>
+                <div class="control">
+                    <input class="input {{ $errors->has('scientific_grade') ? 'is-danger' : '' }}" type="text"
+                        name="scientific_grade" placeholder="Lecture scientific_grade goes here ..."
+                        value="{{ old('scientific_grade') ?? $user->professor->scientific_grade }}">
+                    @error('scientific_grade')
+                        <p class="help is-danger">{{ $message }}</p>
+                    @enderror
+                </div>
+            </div>
+            <div class="position mt-5">
                 {{-- The Professor's photo --}}
                 <div id="photo_upload" class="file has-name is-fullwidth">
                     <label class="file-label">

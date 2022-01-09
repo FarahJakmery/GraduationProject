@@ -1,6 +1,6 @@
 @extends('layouts.app1')
 
-@section('title', 'Create Professor')
+
 
 @section('content')
     <div class="container">
@@ -63,13 +63,26 @@
                     @enderror
                 </div>
             </div>
-            {{-- Description --}}
+            {{-- Scientific Grade --}}
             <div class="field">
-                <label class="label  inputtitle">Description</label>
+                <label class="label  inputtitle">Scientific Grade</label>
                 <div class="control">
-                    <textarea class="textarea {{ $errors->has('description') ? 'is-danger' : '' }}" name="description"
-                        placeholder="professor description goes here ...">{{ old('description') }}</textarea>
-                    @error('description')
+                    <input class="input {{ $errors->has('scientific_grade') ? 'is-danger' : '' }}" type="text"
+                        name="scientific_grade" placeholder="professor scientific_grade goes here ..."
+                        value="{{ old('scientific_grade') }}">
+                    @error('scientific_grade')
+                        <p class="help is-danger">{{ $message }}</p>
+                    @enderror
+                </div>
+            </div>
+            {{-- Scientific Certificate --}}
+            <div class="field">
+                <label class="label  inputtitle">Scientific Certificate</label>
+                <div class="control">
+                    <input class="input {{ $errors->has('scientific_certificate') ? 'is-danger' : '' }}" type="text"
+                        name="scientific_certificate" placeholder="professor's scientific_certificate goes here ..."
+                        value="{{ old('scientific_certificate') }}">
+                    @error('scientific_certificate')
                         <p class="help is-danger">{{ $message }}</p>
                     @enderror
                 </div>
@@ -95,7 +108,7 @@
 
                 {{-- The professor's Photo --}}
                 <div id="photo_upload" class="has-name is-fullwidth  pos">
-                    <label class="file-label">
+                    <label class="file-label file-label1">
                         <input class="file-input" type="file" name="photo">
                         <span class="file-cta">
                             <span class="file-icon">

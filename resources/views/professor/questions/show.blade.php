@@ -1,7 +1,5 @@
 @extends('layouts.app1')
 
-@section('title', 'ALL Questions')
-
 @section('content')
     <div class="container showcontainer">
         {{-- origin image --}}

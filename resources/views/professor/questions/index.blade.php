@@ -1,7 +1,5 @@
 @extends('layouts.app1')
 
-@section('title', 'ALL Questions')
-
 @section('content')
 
     {{-- Button To Add A New Question --}}

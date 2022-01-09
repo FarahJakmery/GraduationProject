@@ -1,7 +1,5 @@
 @extends('layouts.app1')
 
-@section('title', 'Edit Quiz: ')
-
 @section('content')
     <div class="container">
         <form action="{{ route('quizzes.update', $quiz->id) }}" method="post">

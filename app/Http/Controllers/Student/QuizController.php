@@ -52,6 +52,7 @@ class QuizController extends Controller
     {
         $answers = [];
         $quiz_score = 0;
+        $full_mark = 0;
         // $quiz = new Quiz();
 
         // Step 2
@@ -65,9 +66,13 @@ class QuizController extends Controller
                 'option_id' => $answer_id,
                 'correct' => $correct
             ];
+            // The Full mark of the Quiz
+            $full_mark = $full_mark + $question->score;
+
             if ($correct) {
                 $quiz_score += $question->score;
             }
+
             /*
              * Save the answer
              * Check if it is correct and then add points
@@ -83,7 +88,7 @@ class QuizController extends Controller
         ]);
 
         // Step 4
-        return view('student.results.show', ['quiz_details' => $quiz_details]);
+        return view('student.results.show', ['quiz_details' => $quiz_details, 'full_mark' => $full_mark]);
     }
 
     /**

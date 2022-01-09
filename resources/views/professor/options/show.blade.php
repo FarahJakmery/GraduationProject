@@ -1,7 +1,5 @@
 @extends('layouts.app1')
 
-@section('title', 'This is Option show page')
-
 @section('content')
     <div class="container showcontainer">
 
